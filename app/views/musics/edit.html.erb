@@ -2,17 +2,8 @@
 	
 	<div class="row">
 		<h1 style="margin: auto;padding-left: 70px"><center>Song Details</center></h1><br>
-
-		<div style="margin: 20px" class="rounded pull-right">
-			<i><%= link_to 'Home', welcome_Index_path, method: :get,
-					class: 'btn btn-secondary btn-xs' %>
-			</i>
-		</div>
-	</div>
+	</div><br>
 	
 	<%= render partial: 'form', locals: {music: @music} %>
 
-	<div class="col-sm-2">
-		<%= link_to 'Cancel', musics_path, method: :get, :class => 'col-sm-12 btn btn-danger' %>
-	</div>
 </div>

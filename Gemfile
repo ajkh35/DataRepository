@@ -15,7 +15,7 @@ gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Bootstarp sass
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 # Use jquery-rails
 gem 'jquery-rails'
 # Use Uglifier as compressor for JavaScript assets

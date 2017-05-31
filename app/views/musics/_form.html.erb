@@ -47,11 +47,13 @@
       </div>
     </div>
 
-    <div class="submit form-group col-sm-2">
-      <% if current_page?(controller: 'musics', action: 'new') || musics_path %>
-        <%= f.submit 'Add Song', :class => 'col-sm-12 btn btn-success', :name => 'submit' %>
-      <% else %>  
-        <%= f.submit 'Update Song', :class => 'col-sm-12 btn btn-success', :name => 'submit' %>
-      <% end %>
+    <div class="submit">
+      <div class="col-sm-1">
+        <% if music.id %>
+          <%= f.submit 'Update Song', :class => 'btn btn-success', :name => 'submit' %> 
+        <% else %>
+          <%= f.submit 'Add Song', :class => 'btn btn-success', :name => 'submit' %>
+        <% end %>
+      </div>
     </div>
 <% end %>

@@ -12,9 +12,9 @@
 //
 //= require cloudinary
 //= require jquery
-//= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
+//= require bootstrap
 //= require_tree .
 $(document).ready(function() {
 	$('.has-popover').popover({
