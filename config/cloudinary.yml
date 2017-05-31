@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: cloudaj
+  api_key: '432192854972965'
+  api_secret: PyeLJYDL2_aSh5ooK_jKaVx0YhM
+  enhance_image_tag: true
+  static_image_support: true
+production:
+  cloud_name: cloudaj
+  api_key: '432192854972965'
+  api_secret: PyeLJYDL2_aSh5ooK_jKaVx0YhM
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: cloudaj
+  api_key: '432192854972965'
+  api_secret: PyeLJYDL2_aSh5ooK_jKaVx0YhM
+  enhance_image_tag: true
+  static_image_support: false

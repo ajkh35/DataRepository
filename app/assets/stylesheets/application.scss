@@ -1,0 +1,32 @@
+@import 'bootstrap';
+
+.bg-white{
+	background: #ffffff !important;
+}
+
+.rounded{
+	border-radius: 10px;
+}
+
+.pull-right{
+	float: right !important;
+}
+
+.pull-left{
+	float: left !important;
+}
+
+.btn-xl {
+    padding: 20px 20px;
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+.div {
+	-webkit-backface-visibility: hidden;
+}
+
+.carousel {
+	width: 75%;
+	max-height: 420px;
+}

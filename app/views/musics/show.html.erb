@@ -1,0 +1,28 @@
+<div class="container-fluid text-center">
+	
+	<div class="row">
+		<h1 style="margin: auto;margin-top: 20px;padding-left: 70px">
+		<center>Here are the details:-</center></h1><br>
+
+		<div style="margin: 20px" class="rounded pull-right">
+			<i><%= link_to 'Home', welcome_Index_path, method: :get,
+					class: 'btn btn-secondary btn-xs' %>
+			</i>
+		</div>
+	</div>
+
+	<p style="margin: auto" class="pClass">
+	Title: <%= @music.title%><br>
+	Album: <%= @music.album%><br>
+	Artist: <%= @music.artist%><br>
+	Year: <%= @music.year%><br>
+	YouTube: <%= link_to "Go to YouTube", @music.youtube_url,
+				target: :_blank %>
+	
+	<%= button_to "Go to Gallery", {:controller => 'musics', :action => 'index'},
+		:method => :get, :class => 'btn btn-primary' %>
+
+	<i>You will be redirected after 5 seconds...</i>
+	<meta http-equiv="refresh" content="5;url=<%= musics_path %>" />
+	</p>
+</div>

@@ -1,0 +1,26 @@
+<div id="music_wrapper">
+	<div id="<%= music.id %>" style="margin: 10px; margin-right: -5px" 
+		class="col-*-*">
+		
+		<div style="margin: 15px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+			 text-align: center;" class="card text-center">
+			
+			<div class="card-block">
+				<h4 class="card-title"><%= music.title%></h4>
+				<h6 class="card-subtitle mb-2"><%= music.album%></h6>
+				<p class="card-text text-muted"><i>by <%= music.artist%> on <%= music.year%></i></p>
+				<%= link_to "Play on YouTube", music.youtube_url, class: 'btn btn-secondary',
+					target: :_blank %>
+			</div>
+			
+			<div class="card-footer">
+				<div id="edit_music" style="margin: auto; text-align: center">
+					<%= link_to 'Edit', edit_music_path(music.id), method: :get, 
+						class: 'btn btn-info btn-sm' %>&nbsp;&nbsp;
+					<%= link_to 'Delete', music, method: :delete, class: 'btn btn-danger btn-sm', 
+						data: {confirm: "Are you sure?"} %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

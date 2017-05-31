@@ -1,0 +1,29 @@
+<div style="margin-left: -15px;margin-right: -15px;min-height: 100vh" class="container-fluid bg-info">
+
+	<div style="margin: auto" class="row">
+		
+		<div style="margin: auto;padding-left: 70px" class="pClass">
+			<i style="text-shadow: 2px 2px 8px #000000,2px 2px 8px #ffffff;
+				font-size: 50px;color: white">Music Gallery</i>
+		</div>
+
+		<div style="margin: 20px" class="rounded btn-info pull-right">
+			<i><%= link_to 'Home', welcome_Index_path, method: :get,
+					class: 'btn btn-info btn-xl' %>
+			</i>
+		</div>
+	</div>
+
+	<div style="margin: auto;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)" 
+			class="well well-lg bg-faded rounded">
+		
+		<div class="row">
+			<%= render partial: 'music', collection: @musics %>
+		</div><br>
+
+		<div class="text-center">
+			<%= link_to "Add a new song", {controller: 'musics', action: 'new'}, 
+				class: 'btn btn-primary btn-lg', :method => :get %>&nbsp;&nbsp;
+		</div><br>
+	</div><br>
+</div>
