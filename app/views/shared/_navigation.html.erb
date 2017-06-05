@@ -1,35 +1,48 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
-  
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+<nav class="navbar navbar-light fixed-top" style="background-color: white">
+
+  <div class="navbar-header">
+    
+    <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
           aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <a class="navbar-brand" href="<%= welcome_Index_path %>">Home</a>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <span style="font-size: 1.5em" class="navbar-brand">
+      <b>Data Repository</b>
+    </span>
+  </div>
+  
+  <div class="collapse navbar-toggleable-md" id="navbarSupportedContent">
     <% if current_page?(musics_path) %>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">             
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Music</button>  
-      </form>
-    <% elsif current_page?(welcome_Index_path) || current_page?(root_path) %>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
+      <ul style="margin: 10px" class="nav navbar-nav text-md-end justify-content-end">
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
+        <%= link_to 'Home', welcome_Index_path, class: 'btn'%></li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <form class="form-inline">
+            <input class="form-control" type="text" placeholder="Search">           
+            <button class="btn btn-outline-success" type="submit">Search Music</button>
+          </form>
         </li>
       </ul>
-    <% elsif current_page?(controller: 'musics',action: 'new') || current_page?(controller: 'musics',
-            action: 'edit')%>
-      <button onclick="window.location.href='<%= musics_path %>'" class="btn btn-primary">
-      Go Back</button>  
-    <% else %> 
+    <% elsif current_page?(welcome_Index_path) || current_page?(root_path) %>
+      <ul style="margin: 10px" class="nav navbar-nav text-md-center justify-content-md-between">
+        <li style="margin-right: 30px" class="nav-item">
+          <%= link_to 'Home', welcome_Index_path, class: 'btn'%></li>
+        <li style="margin-right: 30px" class="nav-item">
+          <%= link_to 'Music', musics_path, class: 'btn'%></li>
+        <li style="margin-right: 30px" class="nav-item">
+          <%= link_to 'Movies', movies_path, class: 'btn'%></li>
+        <li class="nav-item"><%= link_to 'Games', games_path, class: 'btn'%></li>
+      </ul>
+    <% else %>
+      <ul style="margin: 10px" class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+        <%= link_to 'Home', welcome_Index_path, class: 'btn'%></li>
+        <li class="nav-item">
+          <%= link_to 'Go Back', musics_path, class: 'btn' %>
+        </li>
+      </ul>
     <% end %>
   </div>
 </nav>

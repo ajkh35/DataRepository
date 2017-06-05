@@ -5,5 +5,4 @@ class Music < ApplicationRecord
 	validates :artist, :presence => true
 	validates :album, :presence => true
 	validates :year, :presence => true 
-	validates :youtube_url, :presence => true
 end

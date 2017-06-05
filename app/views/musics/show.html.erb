@@ -10,8 +10,10 @@
 	Album: <%= @music.album%><br>
 	Artist: <%= @music.artist%><br>
 	Year: <%= @music.year%><br>
-	YouTube: <%= link_to "Go to YouTube", @music.youtube_url, target: :_blank %>
-	
+	<% if !@music.youtube_url.blank? %>
+		YouTube: <%= link_to "Go to YouTube", @music.youtube_url, target: :_blank %>
+	<% end %>
+
 	<%= button_to "Go to Gallery", {:controller => 'musics', :action => 'index'},
 		:method => :get, :class => 'btn btn-primary' %>
 

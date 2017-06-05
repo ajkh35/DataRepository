@@ -1,9 +1,9 @@
 <div class="container-fluid">
 
-	</br></br>
-	<h1><b><center>Welcome to the Data Repository!</center></b></h1></br>
+	<!-- </br></br>
+	<h1><b><center>Welcome to the Data Repository!</center></b></h1></br> -->
 
-	<div id="myCarousel" class="carousel slide rounded" data-ride="carousel">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		
 		<ol class="carousel-indicators">
     		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -11,7 +11,7 @@
     		<li data-target="#myCarousel" data-slide-to="2"></li>
   		</ol>
 
-		<div class="carousel-inner rounded" role="listbox">
+		<div class="carousel-inner" role="listbox">
 			<div class="carousel-item active">
 
       			<img class="d-block img-fluid" 
@@ -39,8 +39,8 @@
 		    </div>
 
 		    <div class="carousel-item">
-			    <a class="d-block img-fluid" href="<%= music_path(Music.find(3))%>">
-			      	<img  src="<%= asset_path('meteora.jpg')%>" 
+			    <a href="<%= music_path(Music.find(10))%>">
+			      	<img class="d-block img-fluid" src="<%= asset_path('meteora.jpg')%>" 
 			      		alt="Meteora">
 			    </a>  		
 
@@ -61,49 +61,47 @@
     		<span class="carousel-control-next-icon" aria-hidden="true"></span>
     		<span class="sr-only">Next</span>
   		</a>
+	<%= javascript_tag do %>
+		$(document).ready(function(){
+			$('.carousel').carousel({
+        		interval: 3500
+    		});
+
+    		$('.carousel').carousel('cycle');
+		});
+	<% end %>
 	</div><br>
 		
 	<div id="well" class="well well-lg rounded bg-white">
-		
-		<div style="margin: auto;padding-top: 20px;width: 85%;" class="row valign-wrapper">
-			<div class="col s6 offset-s3 valign">
-				<div id="musicCard" class="card bg-info">
-					<div class="card-block text-center">
-						<h4 class="card-title">MUSIC</h4>
-						<h6 class="card-subtitle mb-2 text-muted">A plethora of music</h6>
-						<p class="card-text">Find a great deal of music in this repository.</p>
-						<%= button_to "Go to Music", {:controller => 'musics', :action => 'index'},
-							:method => :get, :class => 'btn btn-success' %>
-					</div>
-				</div>
+		<div id="jumbotronWrapper" class="col valign-wrapper">
+			<div id="musicJumbotron" class="jumbotron bg-info">
+				<h1 class="display-3">Hello, world!</h1>
+				<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+				<hr class="my-4">
+				<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+				<p class="lead">
+				  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+				</p>
 			</div>
-		</div><br><br>
 
-		<div style="margin: auto;width: 85%;" class="row valign-wrapper">
-			<div class="col s6 offset-s3 valign">
-				<div id="movieCard" class="card bg-danger">
-					<div class="card-block text-center">
-						<h4 class="card-title">MOVIES</h4>
-						<h6 class="card-subtitle mb-2">A library of movies</h6>
-						<p class="card-text">Find a great deal of movies in this repository.</p>
-						<%= button_to "Go to Movies", {:controller => 'movies', :action => 'index'},
-							:method => :get, :class => 'btn btn-success' %>
-					</div>
-				</div>
+			<div id="moviesJumbotron" class="jumbotron bg-danger">
+				<h1 class="display-3">Hello, world!</h1>
+				<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+				<hr class="my-4">
+				<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+				<p class="lead">
+				  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+				</p>
 			</div>
-		</div><br><br>
 
-		<div style="margin: auto;padding-bottom: 20px;width: 85%;" class="row valign-wrapper">
-			<div  class="col s6 offset-s3 valign">
-				<div id="gamesCard" class="card bg-primary">
-					<div class="card-block text-center">
-						<h4 class="card-title">GAMES</h4>
-						<h6 class="card-subtitle mb-2">A collective of games</h6>
-						<p class="card-text">Find a great deal of games in this repository.</p>
-						<%= button_to "Go to Games", {:controller => 'games', :action => 'index'},
-							:method => :get, :class => 'btn btn-success' %>
-					</div>
-				</div>
+			<div id="gamesJumbotron" class="jumbotron bg-primary">
+				<h1 class="display-3">Hello, world!</h1>
+				<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+				<hr class="my-4">
+				<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+				<p class="lead">
+				  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+				</p>
 			</div>
 		</div>
 	</div><br>

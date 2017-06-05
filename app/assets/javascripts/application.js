@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require cloudinary
-//= require jquery
+//= require jquery3
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap
@@ -23,5 +23,5 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-	$.cloudinary.responsive();
+	$.cloudinary.responsive()
 });
