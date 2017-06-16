@@ -1,5 +1,7 @@
 class MusicsController < ApplicationController
 
+	before_action :authorize, :except => :show
+
 	def index
 		@musics = Music.all
 	end

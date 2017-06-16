@@ -1,0 +1,13 @@
+<div style="width: 100%" class="row">
+	<div style="margin: auto;padding: 10px">
+		<i style="font-size: 50px;color: black">Movie Section</i>
+	</div>
+</div>
+
+<div id="movieWell" class="well well-lg bg-white rounded">
+	<div class="col">
+		<div style="margin: auto" class="row">
+			<%= render partial: 'movie', collection: @movies, cached: true %>
+		</div>
+	</div>
+</div>

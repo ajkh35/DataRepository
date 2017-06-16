@@ -1,7 +1,6 @@
-<nav class="navbar navbar-light fixed-top" style="background-color: white">
+<nav id="myNavbar" class="navbar navbar-inverse bg-primary fixed-top">
 
   <div class="navbar-header">
-    
     <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
           aria-expanded="false" aria-label="Toggle navigation">
@@ -11,38 +10,55 @@
     <span style="font-size: 1.5em" class="navbar-brand">
       <b>Data Repository</b>
     </span>
+
+    <% if !logged_in? %>
+      <button class="navbar-toggler-right btn btn-primary" data-toggle="collapse"
+          data-target="#navbarLogin" aria-controls="navbarLogin" aria-expanded="false" 
+          aria-label="Toggle navigation">
+        <span style="font-size: 1em"><b>Log In</b></span>
+      </button>
+    <% else %>
+       <%= link_to 'Log Out', logout_path(get_current_user.id), 
+            class: 'navbar-toggler-right btn btn-primary',method: :delete %>
+    <% end %>
   </div>
   
   <div class="collapse navbar-toggleable-md" id="navbarSupportedContent">
-    <% if current_page?(musics_path) %>
-      <ul style="margin: 10px" class="nav navbar-nav text-md-end justify-content-end">
-        <li class="nav-item">
-        <%= link_to 'Home', welcome_Index_path, class: 'btn'%></li>
-        <li class="nav-item">
-          <form class="form-inline">
-            <input class="form-control" type="text" placeholder="Search">           
-            <button class="btn btn-outline-success" type="submit">Search Music</button>
-          </form>
-        </li>
-      </ul>
-    <% elsif current_page?(welcome_Index_path) || current_page?(root_path) %>
+    <% if current_page?(welcome_Index_path) || current_page?(root_path) || 
+      current_page?(musics_path) || current_page?(movies_path) || current_page?(games_path) %>
       <ul style="margin: 10px" class="nav navbar-nav text-md-center justify-content-md-between">
         <li style="margin-right: 30px" class="nav-item">
-          <%= link_to 'Home', welcome_Index_path, class: 'btn'%></li>
+          <%= link_to 'Home', welcome_Index_path, class: 'btn text-white'%></li>
         <li style="margin-right: 30px" class="nav-item">
-          <%= link_to 'Music', musics_path, class: 'btn'%></li>
+          <%= link_to 'Music', musics_path, class: 'btn text-white'%></li>
         <li style="margin-right: 30px" class="nav-item">
-          <%= link_to 'Movies', movies_path, class: 'btn'%></li>
-        <li class="nav-item"><%= link_to 'Games', games_path, class: 'btn'%></li>
-      </ul>
+          <%= link_to 'Movies', movies_path, class: 'btn text-white'%></li>
+        <li class="nav-item">
+          <%= link_to 'Games', games_path, class: 'btn text-white'%></li> 
+      </ul>  
     <% else %>
       <ul style="margin: 10px" class="nav navbar-nav navbar-right">
         <li class="nav-item">
-        <%= link_to 'Home', welcome_Index_path, class: 'btn'%></li>
+        <%= link_to 'Home', welcome_Index_path, class: 'btn text-white'%></li>
         <li class="nav-item">
-          <%= link_to 'Go Back', musics_path, class: 'btn' %>
+          <%= link_to 'Go Back', musics_path, class: 'btn text-white' %>
         </li>
       </ul>
     <% end %>
+  </div>
+
+  <div class="collapse navbar-toggleable-md" id="navbarLogin">
+    <ul style="margin: 10px" class="nav navbar-nav text-md-center justify-content-md-between">
+      <li class="nav-item">
+        <form class="text-white" action="<%= login_path%>" method="post">
+          <div class="form-group">
+          E-Mail: <input type="text" name="email" class="form-control"></div>
+          <div class="form-group">
+          Password: <input type="password" name="password" class="form-control"></div>
+          <input class="btn btn-primary" type="submit" value="To Account" style="margin-bottom: 5px">
+        </form>
+        <%= button_to 'Create Account', new_user_path, class: 'btn btn-success', method: :get %>
+      </li>
+    </ul>
   </div>
 </nav>

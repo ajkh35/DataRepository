@@ -1,23 +1,21 @@
-<div id="music_wrapper">
-	<div id="wrapper" class="col">
-		<div id="songCard" class="card text-center">
-			<div class="card-block">
-				<h4 class="card-title has-popover" data-toggle="popover" title="<%= music.title%>" >
-				<%= truncate(music.title.html_safe, length: 12)%></h4>
-				<h6 class="card-subtitle mb-2"><%= music.album%></h6>
-				<p class="card-text text-muted"><i>by <%= music.artist%> in <%= music.year%></i></p>
-				<% if !music.youtube_url.blank? %>
-					<%= link_to "Play on YouTube", music.youtube_url, class: 'btn btn-secondary',
-					target: :_blank %>
-				<% end %>
-			</div>
-			<div class="card-footer">
-				<div id="edit_music" style="margin: auto;text-align: center">
-					<%= link_to 'Edit', edit_music_path(music.id), method: :get, 
-						class: 'btn btn-info btn-sm' %>&nbsp;&nbsp;
-					<%= link_to 'Delete', music, method: :delete, 
-						data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'%>
-				</div>
+<div id="music_wrapper" class="col-xs">
+	<div id="songCard" class="card text-center bg-faded">
+		<div class="card-block">
+			<h4 class="card-title has-popover" data-toggle="popover" title="<%= music.title%>" >
+			<%= truncate(music.title.html_safe, length: 12)%></h4>
+			<h6 class="card-subtitle mb-2"><%= music.album%></h6>
+			<p class="card-text text-muted"><i>by <%= music.artist%> in <%= music.year%></i></p>
+			<% if !music.youtube_url.blank? %>
+				<%= link_to "Play on YouTube", music.youtube_url, class: 'btn btn-secondary',
+				target: :_blank %>
+			<% end %>
+		</div>
+		<div class="card-footer">
+			<div id="edit_music" style="margin: auto;text-align: center">
+				<%= link_to 'Edit', edit_music_path(music.id), method: :get, 
+					class: 'btn btn-info btn-sm' %>&nbsp;&nbsp;
+				<%= link_to 'Delete', music, method: :delete, 
+					data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'%>
 			</div>
 		</div>
 	</div>

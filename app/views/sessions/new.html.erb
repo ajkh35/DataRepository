@@ -1,0 +1,24 @@
+<div class="container-fluid" style="padding-top: 70px">
+	<%= form_for :session, url: {:controller => :sessions,:action => :create,method: :post} do |f| %>
+
+	    <div class="field form-group">
+	    	<%= f.label :email, "E-Mail:",class: 'col-sm-2 control-label' %>
+	    	<div class="col-sm-5">
+	    		<%= f.text_field :email, class: 'form-control' %>
+	    	</div>
+	    </div>
+
+	  	<div class="field form-group">
+	        <%= f.label :password, "Password:",class: 'col-sm-2 control-label' %>
+	        <div class="col-sm-5">
+	        	<%= f.password_field :password, class: 'form-control' %>
+	        </div>
+	    </div>
+
+	    <div class="submit">
+	    	<div class="col-sm-1">
+	        	<%= f.submit 'Login', class: 'btn btn-success', :name => 'submit' %>
+	    	</div>
+	    </div>
+	<% end %>
+</div>

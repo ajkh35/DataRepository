@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   </head>
 
-  <body>
+  <body style="padding-top: 60px">
 
     <header>
       <%= render 'shared/navigation' %>
@@ -19,11 +19,13 @@
     <main id="main-container" role="main" class="container-fluid bg-faded">
 
       <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
+        <p style="width: 500px;margin: auto" class="alert alert-success text-center">
+        <%= notice %></p><br>
       <% end %>
 
       <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
+        <p style="width: 500px;margin: auto" class="alert alert-danger text-center">
+        <%= alert %></p><br>
       <% end %>
 
       <div id="main-column" class="col-lg-13">
