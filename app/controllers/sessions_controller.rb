@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
   	user = User.find_by(email: params[:session][:email].downcase)
   	if user && user.authenticate(params[:session][:password])
   		login(user)
-      set_current_user
   		redirect_to welcome_Index_path
   	else
       flash[:alert] = "Invalid email/password"
@@ -19,7 +18,6 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email].downcase)
     if user && user.authenticate(params[:password])
       login(user)
-      set_current_user
       redirect_to welcome_Index_path
     else
       redirect_to welcome_Index_path

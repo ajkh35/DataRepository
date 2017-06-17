@@ -3,7 +3,7 @@ class MusicsController < ApplicationController
 	before_action :authorize, :except => :show
 
 	def index
-		@musics = Music.all
+		@musics = Music.where(user_id: get_current_user)
 	end
 
 	def new
@@ -12,7 +12,7 @@ class MusicsController < ApplicationController
 
 	def create
 		@music = Music.new(music_params)
-		
+		@music.user_id = get_current_user.id
 		if @music.save
 			redirect_to music_path(@music)
 			flash[:notice] = "Added Successfully."
@@ -28,7 +28,6 @@ class MusicsController < ApplicationController
 
 	def update
 		@music = Music.find(params[:id])
-
 		if @music.update(music_params)
 			redirect_to music_path(@music)
 			flash[:notice] = "Updated Successfully."

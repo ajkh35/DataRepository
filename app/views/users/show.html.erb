@@ -8,10 +8,5 @@
 	<p style="margin: auto" class="pClass">
 	E-Mail: <%= @user.email%><br>
 	Password: <%= @user.password%><br>
-
-	<i>You will be redirected after 5 seconds...</i>
-	<%= javascript_tag do %>
-		window.setTimeout(function(){window.location.href='<%= musics_url%>'},5000);
-	<% end %>
 	</p>
 </div>

@@ -36,10 +36,9 @@
 		    </div>
 
 		    <div class="carousel-item">
-			    <a href="<%= music_path(Music.find(1))%>">
-			      	<img class="d-block img-fluid" src="<%= asset_path('meteora.jpg')%>" 
-			      		alt="Meteora">
-			    </a>  		
+		      	<img class="d-block img-fluid" 
+		      		src="<%= asset_path('meteora.jpg')%>" 
+		      		alt="Meteora">
 
 		      	<div style="font-style: bold; color: white" 
       				class="carousel-caption d-none d-md-block">
@@ -87,7 +86,7 @@
 				<hr class="my-4">
 				<p>Find and play trailers of your movies collection.</p>
 				<p class="lead">
-				  <a class="btn btn-danger btn-lg" href="#" role="button">Go to Movies</a>
+				  <a class="btn btn-danger btn-lg" href="<%= movies_path%>" role="button">Go to Movies</a>
 				</p>
 			</div>
 
@@ -97,7 +96,7 @@
 				<hr class="my-4">
 				<p>Find and play trailers of your games here.</p>
 				<p class="lead">
-				  <a class="btn btn-primary btn-lg" href="#" role="button">Go to Games</a>
+				  <a class="btn btn-primary btn-lg" href="<%= games_path%>" role="button">Go to Games</a>
 				</p>
 			</div>
 		</div>

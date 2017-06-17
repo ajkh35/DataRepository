@@ -12,11 +12,13 @@
     </span>
 
     <% if !logged_in? %>
-      <button class="navbar-toggler-right btn btn-primary" data-toggle="collapse"
-          data-target="#navbarLogin" aria-controls="navbarLogin" aria-expanded="false" 
-          aria-label="Toggle navigation">
-        <span style="font-size: 1em"><b>Log In</b></span>
-      </button>
+      <% if !current_page?('/sessions/new') %>
+        <button class="navbar-toggler-right btn btn-primary" data-toggle="collapse"
+            data-target="#navbarLogin" aria-controls="navbarLogin" aria-expanded="false" 
+            aria-label="Toggle navigation">
+          <span style="font-size: 1em"><b>Log In</b></span>
+        </button>
+      <% end %>  
     <% else %>
        <%= link_to 'Log Out', logout_path(get_current_user.id), 
             class: 'navbar-toggler-right btn btn-primary',method: :delete %>
@@ -25,7 +27,8 @@
   
   <div class="collapse navbar-toggleable-md" id="navbarSupportedContent">
     <% if current_page?(welcome_Index_path) || current_page?(root_path) || 
-      current_page?(musics_path) || current_page?(movies_path) || current_page?(games_path) %>
+      current_page?(musics_path) || current_page?(movies_path) || current_page?(games_path) || 
+      current_page?('/users/show') || current_page?('/sessions/new') %>
       <ul style="margin: 10px" class="nav navbar-nav text-md-center justify-content-md-between">
         <li style="margin-right: 30px" class="nav-item">
           <%= link_to 'Home', welcome_Index_path, class: 'btn text-white'%></li>
@@ -33,9 +36,13 @@
           <%= link_to 'Music', musics_path, class: 'btn text-white'%></li>
         <li style="margin-right: 30px" class="nav-item">
           <%= link_to 'Movies', movies_path, class: 'btn text-white'%></li>
-        <li class="nav-item">
+        <li style="margin-right: 30px" class="nav-item">
           <%= link_to 'Games', games_path, class: 'btn text-white'%></li> 
-      </ul>  
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to 'To Profile', user_path(get_current_user), class: 'btn text-white'%></li>
+        <% end %>    
+      </ul>
     <% else %>
       <ul style="margin: 10px" class="nav navbar-nav navbar-right">
         <li class="nav-item">
