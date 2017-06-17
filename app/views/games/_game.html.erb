@@ -12,8 +12,8 @@
 		</div>
 		<div class="card-footer">
 			<div id="edit_game" style="margin: auto;text-align: center">
-				<%= link_to 'Edit', edit_game_path(game.id), method: :get, 
-					class: 'btn btn-info btn-sm' %>&nbsp;&nbsp;
+				<%= link_to 'Edit', {controller: 'games',action: 'edit',id: game.id,token: 'game'}, 
+					method: :get, class: 'btn btn-info btn-sm' %>&nbsp;&nbsp;
 				<%= link_to 'Delete', game, method: :delete, 
 					data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'%>
 			</div>

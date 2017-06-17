@@ -1,6 +1,6 @@
 <div style="width: 100%" class="row">
 	<div style="margin: auto;padding: 10px">
-		<i style="font-size: 50px;color: black">Music Gallery</i>
+		<i style="font-size: 50px;color: black">Games Collection</i>
 	</div>
 </div>
 
@@ -11,7 +11,7 @@
 		</div>
 
 		<div style="text-align: center;padding-top: 20px;padding-bottom: 20px">
-			<%= link_to "Add a new game", {controller: 'games', action: 'new'}, 
+			<%= link_to "Add a new game", {controller: 'games', action: 'new',token: 'game'}, 
 				class: 'btn btn-primary btn-lg', :method => :get %>
 		</div>
 	</div>
