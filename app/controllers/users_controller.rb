@@ -8,8 +8,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	if @user.save
   		login(@user)
-  		set_current_user
-  		redirect_to user_path(@user.id)
+  		redirect_to controller: 'users',action: 'show',id: @user.id, token: 'user'
   		flash[:notice] = "Successful created account"
   	else
   		render 'new'
@@ -28,6 +27,10 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  	params.require(:user).permit(:email, :password, :password_confirmation)
+  	params.require(:user).permit(:email,
+                          :password,:password_confirmation,
+                          :avatar,
+                          :user_name,
+                          :first_name,:last_name)
   end
 end

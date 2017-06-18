@@ -28,7 +28,7 @@
   <div class="collapse navbar-toggleable-md" id="navbarSupportedContent">
     <% if current_page?(welcome_Index_path) || current_page?(root_path) || 
       current_page?(musics_path) || current_page?(movies_path) || current_page?(games_path) || 
-      current_page?('/users/show') || current_page?('/sessions/new') %>
+      (!params[:token].nil? && params[:token]=='user') || current_page?('/sessions/new') %>
       <ul style="margin: 10px" class="nav navbar-nav text-md-center justify-content-md-between">
         <li style="margin-right: 30px" class="nav-item">
           <%= link_to 'Home', welcome_Index_path, class: 'btn text-white'%></li>
@@ -40,7 +40,8 @@
           <%= link_to 'Games', games_path, class: 'btn text-white'%></li> 
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to 'To Profile', user_path(get_current_user), class: 'btn text-white'%></li>
+            <%= link_to 'To Profile', {controller: 'users',action: 'show',id: get_current_user.id, 
+                token: 'user'}, class: 'btn text-white'%></li>
         <% end %>    
       </ul>
     <% else %>

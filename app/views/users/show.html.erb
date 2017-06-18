@@ -2,11 +2,18 @@
 	
 	<div class="row">
 		<h1 style="margin: auto;padding-top: 20px;padding-left: 70px">
-		<center>Here are the details:-</center></h1><br>
-	</div>
+		<center>Here are the details:-</center></h1>
+	</div><br>
 
-	<p style="margin: auto" class="pClass">
-	E-Mail: <%= @user.email%><br>
-	Password: <%= @user.password%><br>
-	</p>
+	<div style="margin: auto">
+		
+		<%= image_tag @user.avatar.url(:square) %>
+
+		<ul style="list-style: none;margin: auto;padding-top: 20px">
+			<li>First Name: <%= @user.first_name%></li><br>
+			<li>Last Name: <%= @user.last_name%></li><br>
+			<li>User Name: <%= @user.user_name%></li><br>
+			<li>E-Mail: <%= @user.email%></li><br>
+		</ul>
+	</div>
 </div>
