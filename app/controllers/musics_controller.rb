@@ -1,6 +1,7 @@
 class MusicsController < ApplicationController
 
 	before_action :authorize, :except => :show
+	respond_to :js, :html
 
 	def index
 		@musics = Music.where(user_id: get_current_user)
@@ -39,7 +40,6 @@ class MusicsController < ApplicationController
 
 	def show
 		@music = Music.find(params[:id])
-		respond_to :js, :html
 	end
 
 	def destroy
@@ -47,6 +47,10 @@ class MusicsController < ApplicationController
 		@music.destroy
 		redirect_to musics_path
 		flash[:notice] = "Deleted Successfully."
+	end
+
+	def confirm_delete
+		@music = Music.find(params[:id])
 	end
 
 	private

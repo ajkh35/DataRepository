@@ -11,8 +11,8 @@
 		<div class="card-footer">
 			<div id="edit_movie" style="margin: auto;text-align: center">
 				<%= link_to 'Edit', {controller: 'movies',action: 'edit',id: movie.id,token: 'movie'}, method: :get, class: 'btn btn-info btn-sm' %>&nbsp;&nbsp;
-				<%= link_to 'Delete', movie, method: :delete, 
-					data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'%>
+				<a href="<%= delete_confirm_movie_path%>" class="btn btn-danger btn-sm"
+					data-remote="true" data-params="id=<%= movie.id%>">Delete</a>
 			</div>
 		</div>
 	</div>

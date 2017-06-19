@@ -46,6 +46,10 @@ class MoviesController < ApplicationController
   	redirect_to movies_path
   end
 
+  def confirm_delete
+    @movie = Movie.find(params[:id])
+  end
+
   private
   def movie_params
     params.require(:movie).permit(:title, :genre, :year)

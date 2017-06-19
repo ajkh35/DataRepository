@@ -46,6 +46,10 @@ class GamesController < ApplicationController
     redirect_to games_path
   end
 
+  def confirm_delete
+    @game = Game.find(params[:id])
+  end
+
   private
   def game_params
     params.require(:game).permit(:title, :creator, :year)

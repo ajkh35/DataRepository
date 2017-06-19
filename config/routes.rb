@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   post 'sessions/create_from_nav', :to => 'sessions#create_from_nav', :as => 'login'
   get 'sessions/new'
 
+  # Delete confirm modal routes
+  get 'musics/confirm_delete', :to => 'musics#confirm_delete', :as => 'delete_confirm_music'
+  get 'movies/confirm_delete', :to => 'movies#confirm_delete', :as => 'delete_confirm_movie'
+  get 'games/confirm_delete', :to => 'games#confirm_delete', :as => 'delete_confirm_game'
+
   get 'welcome/Index'
 
   resources :musics
