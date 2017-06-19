@@ -1,0 +1,14 @@
+<div class="modal-body">
+	<% id = find_trailer(movie)%>
+	<% if !id.nil? %>
+		<iframe src="https://www.youtube.com/embed/<%= id%>"
+			width="470" height="360" allowFullScreen="allowFullScreen"
+			frameBorder="0"></iframe>
+	<% else %>
+		<b>Could not find a trailer</b>
+	<% end %>		
+</div>
+
+<div class="modal-footer">
+	<%= link_to 'Close','#',data: {dismiss: 'modal'},class: 'btn btn-primary' %>
+</div>

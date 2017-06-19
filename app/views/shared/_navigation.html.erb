@@ -38,7 +38,7 @@
           <%= link_to 'Movies', movies_path, class: 'btn text-white'%></li>
         <li style="margin-right: 30px" class="nav-item">
           <%= link_to 'Games', games_path, class: 'btn text-white'%></li> 
-        <% if logged_in? %>
+        <% if logged_in? && params[:token]!='user'%>
           <li class="nav-item">
             <%= link_to 'To Profile', {controller: 'users',action: 'show',id: get_current_user.id, 
                 token: 'user'}, class: 'btn text-white'%></li>

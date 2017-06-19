@@ -5,10 +5,8 @@
 			<%= truncate(music.title.html_safe, length: 12)%></h4>
 			<h6 class="card-subtitle mb-2"><%= music.album%></h6>
 			<p class="card-text text-muted"><i>by <%= music.artist%> in <%= music.year%></i></p>
-			<% if !music.youtube_url.blank? %>
-				<%= link_to "Play on YouTube", music.youtube_url, class: 'btn btn-secondary',
-				target: :_blank %>
-			<% end %>
+			<%= link_to "Play on YouTube", music_path(music), class: 'btn btn-secondary',
+				method: :get, remote: true %>
 		</div>
 		<div class="card-footer">
 			<div id="edit_music" style="margin: auto;text-align: center">

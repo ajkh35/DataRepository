@@ -37,6 +37,7 @@ class MoviesController < ApplicationController
 
   def show
   	@movie = Movie.find(params[:id])
+    respond_to :js, :html
   end
 
   def destroy

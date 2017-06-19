@@ -37,6 +37,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    respond_to :js, :html
   end
 
   def destroy

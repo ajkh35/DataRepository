@@ -5,14 +5,13 @@
 			<%= truncate(game.title.html_safe, length: 12)%></h4>
 			<h6 class="card-subtitle mb-2"><%= game.creator%></h6>
 			<p class="card-text text-muted"><i>released in <%= game.year%></i></p>
-			<% if !game.trailer_url.blank? %>
-				<%= link_to "Play Trailer", game.trailer_url, class: 'btn btn-secondary',
-				target: :_blank %>
-			<% end %>
+			<%= link_to 'Play Trailer', game_path(:id => game.id), class: 'btn btn-secondary',
+				method: :get, remote: true %>
 		</div>
+
 		<div class="card-footer">
 			<div id="edit_game" style="margin: auto;text-align: center">
-				<%= link_to 'Edit', {controller: 'games',action: 'edit',id: game.id,token: 'game'}, 
+				<%= link_to 'Edit', {controller: 'games',action: 'edit',id: game.id,token: 'game'},
 					method: :get, class: 'btn btn-info btn-sm' %>&nbsp;&nbsp;
 				<%= link_to 'Delete', game, method: :delete, 
 					data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'%>

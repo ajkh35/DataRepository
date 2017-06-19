@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
+	include ActionController::MimeResponds
 	protect_from_forgery with: :null_session
 	skip_before_action :verify_authenticity_token
 
 	helper_method :logged_in?
 	helper_method :get_current_user
+
+	Yt.configuration.api_key = 'AIzaSyC3slR3xP_PQViWhdONhBe5iLWqsZP5vB4'
 
 	def login(user)
 		session[:user_id] = user.id

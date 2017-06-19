@@ -39,6 +39,7 @@ class MusicsController < ApplicationController
 
 	def show
 		@music = Music.find(params[:id])
+		respond_to :js, :html
 	end
 
 	def destroy
