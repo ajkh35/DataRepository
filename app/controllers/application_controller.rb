@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 	include ActionController::MimeResponds
+
 	protect_from_forgery with: :null_session
 	skip_before_action :verify_authenticity_token
 
@@ -24,8 +25,10 @@ class ApplicationController < ActionController::Base
 		session.delete(:user_id)
 	end
 
-  def authorize
-    redirect_to sessions_new_path unless logged_in?
-    flash[:alert] = "Log in to continue" unless logged_in?
-  end
+	def authorize
+		unless logged_in?
+		  redirect_to sessions_new_path 
+		  flash[:alert] = "Log in to continue"
+		end
+	end
 end

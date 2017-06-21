@@ -1,11 +1,26 @@
 <nav id="myNavbar" class="navbar navbar-inverse bg-primary fixed-top">
 
   <div class="navbar-header">
-    <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
-          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-          aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
+    <%# if !params[:token].nil? && params[:token]=='user' %>
+      <!-- <button class="navbar-toggler navbar-toggler-left" type="button" id="menu-toggle" 
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <%#= javascript_tag do %>
+        <!-- $('#menu-toggle').click(function(e) {
+          e.preventDefault();
+          $('#wrapper').toggleClass("active");
+        }); -->
+      <%# end %>
+    
+    <%# else %>  
+      <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <%# end %>
 
     <span style="font-size: 1.5em" class="navbar-brand">
       <b>Data Repository</b>

@@ -1,8 +1,9 @@
 <div id="music_wrapper" class="col-xs">
 	<div id="songCard" class="card text-center bg-faded">
 		<div class="card-block">
-			<h4 class="card-title has-popover" data-toggle="popover" title="<%= music.title%>" >
-			<%= truncate(music.title.html_safe, length: 12)%></h4>
+			<a style="text-decoration: none;color: black" href="<%= music_path(music)%>">
+			<h4 class="card-title has-popover" data-toggle="popover" title="<%= music.title%>">
+				<%= truncate(music.title.html_safe, length: 12)%></h4></a>
 			<h6 class="card-subtitle mb-2"><%= music.album%></h6>
 			<p class="card-text text-muted"><i>by <%= music.artist%> in <%= music.year%></i></p>
 			<%= link_to "Play on YouTube", music_path(music), class: 'btn btn-secondary',

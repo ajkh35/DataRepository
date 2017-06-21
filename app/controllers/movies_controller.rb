@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   
   before_action :authorize, :except => :show
+  respond_to :js, :html
 
   def index
   	@movies = Movie.where(user_id: get_current_user)
@@ -37,7 +38,6 @@ class MoviesController < ApplicationController
 
   def show
   	@movie = Movie.find(params[:id])
-    respond_to :js, :html
   end
 
   def destroy

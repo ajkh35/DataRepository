@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   
   before_action :authorize, :except => :show
+  respond_to :js, :html
 
   def index
     @games = Game.where(user_id: get_current_user)
@@ -37,7 +38,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    respond_to :js, :html
   end
 
   def destroy
