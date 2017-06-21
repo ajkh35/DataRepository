@@ -6,13 +6,13 @@
 
 <div id="movieWell" class="well well-lg bg-white rounded">
 	<div class="col">
-		<div style="margin: auto" class="row">
+		<div id="movieRow" style="margin: auto" class="row">
 			<%= render partial: 'movie', collection: @movies, cached: true %>
 		</div>
 
 		<div style="text-align: center;padding-top: 20px;padding-bottom: 20px">
 			<%= link_to "Add a new movie", {controller: 'movies', action: 'new',token: 'movie'}, 
-				class: 'btn btn-primary btn-lg', :method => :get %>
+				class: 'btn btn-primary btn-lg', :method => :get, remote: true %>
 		</div>
 	</div>
 </div>

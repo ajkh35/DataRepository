@@ -1,4 +1,4 @@
-<div id="game_wrapper" class="col-xs">
+<div id="<%= game.id%>" class="col-xs">
 	<div id="gameCard" class="card text-center bg-faded">
 		<div class="card-block">
 			<h4 class="card-title has-popover" data-toggle="popover" title="<%= game.title%>" >
@@ -12,7 +12,7 @@
 		<div class="card-footer">
 			<div id="edit_game" style="margin: auto;text-align: center">
 				<%= link_to 'Edit', {controller: 'games',action: 'edit',id: game.id,token: 'game'},
-					method: :get, class: 'btn btn-info btn-sm' %>&nbsp;&nbsp;
+					method: :get, class: 'btn btn-info btn-sm', remote: true %>&nbsp;&nbsp;
 				<a href="<%= delete_confirm_game_path%>" data-remote="true" 
 					class="btn btn-sm btn-danger" data-params="id=<%= game.id%>">Delete</a>
 			</div>

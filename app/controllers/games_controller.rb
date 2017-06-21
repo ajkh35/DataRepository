@@ -15,7 +15,6 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.user_id = get_current_user.id
     if @game.save
-      redirect_to game_path(@game)
       flash[:notice] = "Added Game"
     else
       render 'new'
@@ -29,8 +28,7 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     if @game.update(game_params)
-      redirect_to game_path(@game)
-      flash[:notice] = "Updated successfully"
+      flash[:notice] = "Updated game"
     else
       render 'edit'
     end
@@ -43,7 +41,7 @@ class GamesController < ApplicationController
   def destroy
     @game = Game.find(params[:id])
     @game.destroy
-    redirect_to games_path
+    flash[:notice] = "Deleted game"
   end
 
   def confirm_delete

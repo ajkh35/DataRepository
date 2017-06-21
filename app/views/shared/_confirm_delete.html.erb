@@ -4,11 +4,11 @@
 
 <div class="modal-footer">
 	<% if !music.nil? && game.nil? && movie.nil? %>
-		<%= link_to 'Delete',music,method: :delete, class: 'btn btn-danger' %>&nbsp;&nbsp;
+		<%= link_to 'Delete',music,method: :delete, class: 'btn btn-danger', remote: true %>&nbsp;&nbsp;
 	<% elsif !movie.nil? && music.nil? && game.nil? %>
-		<%= link_to 'Delete',movie,method: :delete, class: 'btn btn-danger' %>&nbsp;&nbsp;
+		<%= link_to 'Delete',movie,method: :delete, class: 'btn btn-danger', remote: true %>&nbsp;&nbsp;
 	<% elsif !game.nil? && movie.nil? && music.nil? %>
-		<%= link_to 'Delete',game,method: :delete, class: 'btn btn-danger' %>&nbsp;&nbsp;
+		<%= link_to 'Delete',game,method: :delete, class: 'btn btn-danger', remote: true %>&nbsp;&nbsp;
 	<% else %>
 	<% end %>
 	<%= link_to 'Close','#',data: {dismiss: "modal"},class: 'btn btn-primary' %>

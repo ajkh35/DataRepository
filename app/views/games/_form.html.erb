@@ -1,45 +1,51 @@
-<%= form_for game, html: {class: 'form-horizontal'} do |f| %>
+<%= form_for(game, html: {class: 'form-horizontal'}, remote:true) do |f| %>
     
-    <% if game.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
+    <div class="modal-body">
+      <% if game.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
 
-        <ul>
-          <% game.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+          <ul>
+            <% game.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field form-group">
+      	<%= f.label :title, "Title:",class: 'col-sm-2 control-label' %>
+      	<div class="col-sm-5">
+      	 <%= f.text_field :title, class: 'form-control' %>
+      	</div>
+      </div>
+
+    	<div class="field form-group">
+        <%= f.label :creator, "Creator:",class: 'col-sm-2 control-label' %>
+        <div class="col-sm-5">
+         <%= f.text_field :creator, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :year, "Year:", class: 'col-sm-2 control-label' %>
+        <div class="col-sm-5">
+          <%= f.number_field :year, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <div class="submit">
+        <div class="col-sm-1">
+          <% if game.id %>
+            <%= f.submit 'Update Game', :class => 'btn btn-success', :name => 'submit' %> 
+          <% else %>
+            <%= f.submit 'Add Game', :class => 'btn btn-success', :name => 'submit' %>
           <% end %>
-        </ul>
+        </div>
       </div>
-    <% end %>
 
-    <div class="field form-group">
-    	<%= f.label :title, "Title:",class: 'col-sm-2 control-label' %>
-    	<div class="col-sm-5">
-    	 <%= f.text_field :title, class: 'form-control' %>
-    	</div>
-    </div>
-
-  	<div class="field form-group">
-      <%= f.label :creator, "Creator:",class: 'col-sm-2 control-label' %>
-      <div class="col-sm-5">
-       <%= f.text_field :creator, class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :year, "Year:", class: 'col-sm-2 control-label' %>
-      <div class="col-sm-5">
-        <%= f.number_field :year, class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class="submit">
-      <div class="col-sm-1">
-        <% if game.id %>
-          <%= f.submit 'Update Game', :class => 'btn btn-success', :name => 'submit' %> 
-        <% else %>
-          <%= f.submit 'Add Game', :class => 'btn btn-success', :name => 'submit' %>
-        <% end %>
-      </div>
+      <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
     </div>
 <% end %>

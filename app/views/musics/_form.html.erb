@@ -1,52 +1,58 @@
-<%= form_for music, html: {class: 'form-horizontal'} do |f| %>
-    
-    <% if music.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(music.errors.count, "error") %> prohibited this music from being saved:</h2>
+<%= form_for(music, html: {class: 'form-horizontal'}, remote: true) do |f| %>
 
-        <ul>
-          <% music.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+    <div class="modal-body">
+      <% if music.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(music.errors.count, "error") %> prohibited this music from being saved:</h2>
+
+          <ul>
+            <% music.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field form-group">
+      	<%= f.label :title, "Title:",class: 'col-sm-2 control-label' %>
+      	<div class="col-sm-5">
+      	 <%= f.text_field :title, class: 'form-control' %>
+      	</div>
+      </div>
+
+    	<div class="field form-group">
+        <%= f.label :artist, "Artist:",class: 'col-sm-2 control-label' %>
+        <div class="col-sm-5">
+         <%= f.text_field :artist, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+      	<%= f.label :album, "Album:", class: 'col-sm-2 control-label' %>
+      	<div class="col-sm-5">
+          <%= f.text_field :album, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :year, "Year:", class: 'col-sm-2 control-label' %>
+        <div class="col-sm-5">
+          <%= f.number_field :year, class: 'form-control' %>
+        </div>
+      </div>
+    </div>  
+
+    <div class="modal-footer">
+      <div class="submit">
+        <div class="col-sm-1">
+          <% if music.id %>
+            <%= f.submit 'Update Song', :class => 'btn btn-success', :name => 'submit' %> 
+          <% else %>
+            <%= f.submit 'Add Song', :class => 'btn btn-success', :name => 'submit' %>
           <% end %>
-        </ul>
+        </div>
       </div>
-    <% end %>
 
-    <div class="field form-group">
-    	<%= f.label :title, "Title:",class: 'col-sm-2 control-label' %>
-    	<div class="col-sm-5">
-    	 <%= f.text_field :title, class: 'form-control' %>
-    	</div>
-    </div>
-
-  	<div class="field form-group">
-      <%= f.label :artist, "Artist:",class: 'col-sm-2 control-label' %>
-      <div class="col-sm-5">
-       <%= f.text_field :artist, class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class="field form-group">
-    	<%= f.label :album, "Album:", class: 'col-sm-2 control-label' %>
-    	<div class="col-sm-5">
-        <%= f.text_field :album, class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :year, "Year:", class: 'col-sm-2 control-label' %>
-      <div class="col-sm-5">
-        <%= f.number_field :year, class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class="submit">
-      <div class="col-sm-1">
-        <% if music.id %>
-          <%= f.submit 'Update Song', :class => 'btn btn-success', :name => 'submit' %> 
-        <% else %>
-          <%= f.submit 'Add Song', :class => 'btn btn-success', :name => 'submit' %>
-        <% end %>
-      </div>
+      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
     </div>
 <% end %>

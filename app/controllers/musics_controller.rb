@@ -15,11 +15,9 @@ class MusicsController < ApplicationController
 		@music = Music.new(music_params)
 		@music.user_id = get_current_user.id
 		if @music.save
-			redirect_to music_path(@music)
-			flash[:notice] = "Added Successfully."
+			flash[:notice] = "Added song"
 		else
 			render 'new'
-			flash[:alert] = "Save Unsuccessful."
 		end
 	end
 
@@ -30,11 +28,9 @@ class MusicsController < ApplicationController
 	def update
 		@music = Music.find(params[:id])
 		if @music.update(music_params)
-			redirect_to music_path(@music)
-			flash[:notice] = "Updated Successfully."
+			flash[:notice] = "Updated song"
 		else
 			render 'edit'
-			flash[:alert] = "Could not update."
 		end		
 	end
 
@@ -45,8 +41,7 @@ class MusicsController < ApplicationController
 	def destroy
 		@music = Music.find(params[:id])
 		@music.destroy
-		redirect_to musics_path
-		flash[:notice] = "Deleted Successfully."
+		flash[:notice] = "Deleted song"
 	end
 
 	def confirm_delete

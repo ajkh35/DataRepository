@@ -18,15 +18,7 @@
 
     <main id="main-container" role="main" class="container-fluid bg-faded">
 
-      <% if notice %>
-        <p style="width: 500px;margin: auto" class="alert alert-success text-center">
-        <%= notice %></p><br>
-      <% end %>
-
-      <% if alert %>
-        <p style="width: 500px;margin: auto" class="alert alert-danger text-center">
-        <%= alert %></p><br>
-      <% end %>
+      <div id="alert_wrapper" style="width: 500px;margin: auto"></div>
 
       <div id="main-column" class="col-lg">
         <%= yield %>
@@ -84,6 +76,7 @@
     </footer>
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+    </script>
   </body>
 </html>
