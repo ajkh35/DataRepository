@@ -5,7 +5,7 @@
 			<%= truncate(movie.title.html_safe, length: 12)%></h4>
 			<h6 class="card-subtitle mb-2"><%= movie.genre%></h6>
 			<p class="card-text text-muted"><i>released in year <%= movie.year%></i></p>
-			<%= link_to "Play on YouTube", movie_path(movie), class: 'btn btn-secondary',
+			<%= link_to "Play Trailer", movie_path(movie), class: 'btn btn-secondary',
 				method: :get, remote: true %>
 		</div>
 		<div class="card-footer">

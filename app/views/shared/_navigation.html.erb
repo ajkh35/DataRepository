@@ -2,7 +2,7 @@
 
   <div class="navbar-header">
 
-    <% if !params[:token].nil? && params[:token]=='user' %>
+    <% if logged_in? && current_page?(user_path(get_current_user)) %>
       <a href="#menu-toggle" class="navbar-toggler navbar-toggler-left" id="menu-toggle">
         <span class="navbar-toggler-icon"></span>
       </a>
@@ -45,10 +45,11 @@
           <%= link_to 'Movies', movies_path, class: 'btn text-white'%></li>
         <li style="margin-right: 30px" class="nav-item">
           <%= link_to 'Games', games_path, class: 'btn text-white'%></li> 
-        <% if logged_in? && params[:token]!='user'%>
+        <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to 'To Profile', {controller: 'users',action: 'show',id: get_current_user.id, 
-                token: 'user'}, class: 'btn text-white'%></li>
+            <%= link_to 'To Profile', {controller: 'users',action: 'show',id: get_current_user.id,
+                token: 'dashboard'}, class: 'btn text-white' %>  
+          </li>
         <% end %>    
       </ul>
     <% else %>

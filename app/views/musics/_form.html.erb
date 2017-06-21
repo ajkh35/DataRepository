@@ -1,5 +1,9 @@
 <%= form_for(music, html: {class: 'form-horizontal'}, remote: true) do |f| %>
 
+    <div class="modal-header">
+      <h2>Song Details:</h2>
+    </div>
+
     <div class="modal-body">
       <% if music.errors.any? %>
         <div id="error_explanation">

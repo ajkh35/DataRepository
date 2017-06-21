@@ -4,7 +4,8 @@
 	<div id="sidebar-wrapper" class="bg-primary">
 		
 		<span>
-	        <%= image_tag @user.avatar.url(:medium), :class => 'img-circular' %>
+			<a href="<%= edit_user_path(@user)%>" data-remote="true">
+	        <%= image_tag @user.avatar.url(:medium), :class => 'img-circular' %></a>
 	    </span>
 
 	    <ul class="sidebar-nav">
@@ -12,19 +13,19 @@
 	        	<a href="<%= root_url%>">Home</a>
 	        </li>
 	        <li>
-	            <a href="#">Dashboard</a>
+	            <a id="dashboard" href="/users/<%= @user.id%>?token=dashboard">Dashboard</a>
 	        </li>
 	        <li>
-	            <a href="#">Music</a>
+	            <a id="music" href="/users/<%= @user.id%>?token=music">Music</a>
 	        </li>
 	        <li>
-	            <a href="#">Movies</a>
+	            <a id="movies" href="/users/<%= @user.id%>?token=movies">Movies</a>
 	        </li>
 	        <li>
-	            <a href="#">Games</a>
+	            <a id="games" href="/users/<%= @user.id%>?token=games">Games</a>
 	        </li>
 	        <li>
-	            <a href="#">Documents</a>
+	            <a id="documents" href="#">Documents</a>
 	        </li>
 	    </ul>
 	</div>
@@ -38,57 +39,27 @@
 				<center>Hey, <%= @user.first_name%>!</center></h1>
 			</div><br>
 
-			<div class="well well-md bg-white rounded" id="profile_well">
-				
-				<div class="col" style="margin: 15px">
-					<div class="row" style="margin-bottom: 50px;">
-						<div class="col">
-							<h2 style="margin: auto;padding-bottom: 10px;">Your Songs</h2>
-							<% if @songs.to_a.empty? %>
-								<h3 style="margin: auto;">There are no songs!</h3>
-							<% else %>
-								<div class="row">
-									<%= render partial: 'musics/music', collection: @songs, cached: true %>
-								</div>	
-							<% end %>
-						</div>
-					</div>
-
-					<div class="row" style="margin-bottom: 50px">
-						<div class="col">
-							<h2 style="margin: auto;padding-bottom: 10px;">Your Movies</h2>
-							<% if @movies.to_a.empty? %>
-								<h3 style="margin: auto;">There are no movies!</h3>
-							<% else %>	
-								<div class="row">
-									<%= render partial: 'movies/movie', collection: @movies, cached: true %>
-								</div>	
-							<% end %>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col">
-							<h2 style="margin: auto;padding-bottom: 10px;">Your Games</h2>
-							<% if @games.to_a.empty? %>
-								<h3 style="margin: auto;">There are no games!</h3>
-							<% else %>	
-								<div class="row">
-									<%= render partial: 'games/game', collection: @games, cached: true %>
-								</div>	
-							<% end %>
-						</div>
-					</div>
-				</div>
-			</div>
+			<%= render partial: 'dashboard',locals: {songs: @songs,movies: @movies,games: @games} %>
 		</div>
 	</div>
 </div>
 
-<!-- Menu Toggle Script -->
 <script>
+// Menu Toggle Script 
 $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
+
+// Set selected menu option
+// var selector = '.sidebar-nav li';
+
+// $(selector).on('click', function(){
+//     $(selector).removeClass('active');
+//     $(this).addClass('active'); 
+// });
+
+// Set selected menu option from url
+var id = "<%= j @menuOption %>";
+$("#"+id).addClass('active');
 </script>

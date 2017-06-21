@@ -20,6 +20,13 @@
 
       <div id="alert_wrapper" style="width: 500px;margin: auto"></div>
 
+      <% if alert %>
+        <p class="alert alert-info" style="width: 500px;margin: auto">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          <%= alert %>
+        </p>
+      <% end %>
+
       <div id="main-column" class="col-lg">
         <%= yield %>
       </div>

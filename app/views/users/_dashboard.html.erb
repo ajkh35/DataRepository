@@ -1,0 +1,49 @@
+<div class="well well-md bg-white rounded" id="profile_well">
+				
+	<div class="col" style="margin: 15px">
+		<% if !songs.nil? %>
+		<div class="row" style="margin-bottom: 50px;">
+			<div class="col">
+				<h2 style="margin: auto;padding-bottom: 10px;">Your Songs</h2>
+				<% if songs.to_a.empty? %>
+					<h3 style="margin: auto;">There are no songs!</h3>
+				<% else %>
+					<div class="row">
+						<%= render partial: 'musics/music', collection: songs, cached: true %>
+					</div>	
+				<% end %>
+			</div>
+		</div>
+		<% end %>
+
+		<% if !movies.nil? %>
+		<div class="row" style="margin-bottom: 50px">
+			<div class="col">
+				<h2 style="margin: auto;padding-bottom: 10px;">Your Movies</h2>
+				<% if movies.to_a.empty? %>
+					<h3 style="margin: auto;">There are no movies!</h3>
+				<% else %>	
+					<div class="row">
+						<%= render partial: 'movies/movie', collection: movies, cached: true %>
+					</div>	
+				<% end %>
+			</div>
+		</div>
+		<% end %>
+
+		<% if !games.nil? %>
+		<div class="row">
+			<div class="col">
+				<h2 style="margin: auto;padding-bottom: 10px;">Your Games</h2>
+				<% if games.to_a.empty? %>
+					<h3 style="margin: auto;">There are no games!</h3>
+				<% else %>	
+					<div class="row">
+						<%= render partial: 'games/game', collection: games, cached: true %>
+					</div>	
+				<% end %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'movies/confirm_delete', :to => 'movies#confirm_delete', :as => 'delete_confirm_movie'
   get 'games/confirm_delete', :to => 'games#confirm_delete', :as => 'delete_confirm_game'
 
+  
+
   get 'welcome/Index'
 
   resources :musics

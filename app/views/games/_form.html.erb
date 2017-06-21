@@ -1,5 +1,9 @@
 <%= form_for(game, html: {class: 'form-horizontal'}, remote:true) do |f| %>
     
+    <div class="modal-header">
+      <h2>Game details:</h2>
+    </div>
+
     <div class="modal-body">
       <% if game.errors.any? %>
         <div id="error_explanation">
