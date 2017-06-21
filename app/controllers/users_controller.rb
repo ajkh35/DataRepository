@@ -32,7 +32,13 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-    verify_user(@user)
+    if verify_user(@user)
+      @songs = Music.where(user_id: @user.id)
+      @movies = Movie.where(user_id: @user.id)
+      @games = Game.where(user_id: @user.id)
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def destroy
@@ -49,9 +55,9 @@ class UsersController < ApplicationController
 
   def verify_user(user)
     if get_current_user.id == user.id
-      return
+      return true
     else
-      redirect_to user_path(get_current_user)
+      return false
     end
   end
 end

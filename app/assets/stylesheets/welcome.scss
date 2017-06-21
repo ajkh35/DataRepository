@@ -1,3 +1,23 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#myCarousel {
+	margin: auto;
+	interval: 5000;
+	background-color: grey;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#jumbotronWell {
+	margin: auto;
+	width: 95%;
+	padding-top: 45px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#jumbotronWrapper {
+	margin: auto;
+	width: 85%;
+	padding-bottom: 15px;
+}

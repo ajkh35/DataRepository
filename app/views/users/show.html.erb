@@ -1,19 +1,94 @@
-<div class="container-fluid text-center">
-	
-	<div class="row">
-		<h1 style="margin: auto;padding-top: 20px;padding-left: 70px">
-		<center>Hey, there!</center></h1>
-	</div><br>
+<div id="wrapper" class="row">
 
-	<div class="well well-md bg-white rounded" id="profile_well">
+	<!-- Sidebar -->
+	<div id="sidebar-wrapper" class="bg-primary">
 		
-		<%= image_tag @user.avatar.url(:square) %>
+		<span>
+	        <%= image_tag @user.avatar.url(:medium), :class => 'img-circular' %>
+	    </span>
 
-		<ul style="list-style: none;margin: auto;padding-top: 20px">
-			<li>First Name: <%= @user.first_name%></li><br>
-			<li>Last Name: <%= @user.last_name%></li><br>
-			<li>User Name: <%= @user.user_name%></li><br>
-			<li>E-Mail: <%= @user.email%></li><br>
-		</ul>
+	    <ul class="sidebar-nav">
+	        <li class="sidebar-brand">
+	        	<a href="<%= root_url%>">Home</a>
+	        </li>
+	        <li>
+	            <a href="#">Dashboard</a>
+	        </li>
+	        <li>
+	            <a href="#">Music</a>
+	        </li>
+	        <li>
+	            <a href="#">Movies</a>
+	        </li>
+	        <li>
+	            <a href="#">Games</a>
+	        </li>
+	        <li>
+	            <a href="#">Documents</a>
+	        </li>
+	    </ul>
+	</div>
+
+	<!-- Page Content -->
+	<div id="page-content-wrapper" class="col-lg">
+		<div class="container-fluid text-center">
+			
+			<div class="row">
+				<h1 style="margin: auto;padding-top: 20px;padding-left: 70px">
+				<center>Hey, <%= @user.first_name%>!</center></h1>
+			</div><br>
+
+			<div class="well well-md bg-white rounded" id="profile_well">
+				
+				<div class="col" style="margin: 15px">
+					<div class="row" style="margin-bottom: 50px;">
+						<div class="col">
+							<h2 style="margin: auto;padding-bottom: 10px;">Your Songs</h2>
+							<% if @songs.to_a.empty? %>
+								<h3 style="margin: auto;">There are no songs!</h3>
+							<% else %>
+								<div class="row">
+									<%= render partial: 'musics/music', collection: @songs, cached: true %>
+								</div>	
+							<% end %>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 50px">
+						<div class="col">
+							<h2 style="margin: auto;padding-bottom: 10px;">Your Movies</h2>
+							<% if @movies.to_a.empty? %>
+								<h3 style="margin: auto;">There are no movies!</h3>
+							<% else %>	
+								<div class="row">
+									<%= render partial: 'movies/movie', collection: @movies, cached: true %>
+								</div>	
+							<% end %>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<h2 style="margin: auto;padding-bottom: 10px;">Your Games</h2>
+							<% if @games.to_a.empty? %>
+								<h3 style="margin: auto;">There are no games!</h3>
+							<% else %>	
+								<div class="row">
+									<%= render partial: 'games/game', collection: @games, cached: true %>
+								</div>	
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
+<!-- Menu Toggle Script -->
+<script>
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+</script>

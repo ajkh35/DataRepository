@@ -5,11 +5,11 @@
 	width: 100%;
 	font: bold 16px sans-serif;
 	text-align: left;
+	align-content: center;
 
 	padding: 50px 60px 40px;
-	margin-top: 80px;
 	overflow: hidden;
-}
+}	
 
 /* Footer left */
 
@@ -26,7 +26,7 @@
 }
 
 .footer-distributed h3 span{
-	color:  #5383d3;
+	color:  #c0c0c0;
 }
 
 /* Footer links */
