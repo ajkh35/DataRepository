@@ -2,7 +2,6 @@
 
 	<!-- Sidebar -->
 	<div id="sidebar-wrapper" class="bg-primary">
-		
 		<span>
 			<a href="<%= edit_user_path(@user)%>" data-remote="true">
 	        <%= image_tag @user.avatar.url(:medium), :class => 'img-circular' %></a>
@@ -10,7 +9,7 @@
 
 	    <ul class="sidebar-nav">
 	        <li class="sidebar-brand">
-	        	<a href="<%= root_url%>">Home</a>
+	        	<a id="home" href="#">Home</a>
 	        </li>
 	        <li>
 	            <a id="dashboard" href="/users/<%= @user.id%>?token=dashboard">Dashboard</a>
@@ -27,6 +26,12 @@
 	        <li>
 	            <a id="documents" href="#">Documents</a>
 	        </li>
+	        <li id="delete_account">
+	        	<span>
+	        		<a href="<%= delete_confirm_user_path%>" data-remote="true"
+	        		data-params="id=<%= get_current_user.id%>">Delete Account</a>
+	    		</span>
+	        </li>
 	    </ul>
 	</div>
 
@@ -35,11 +40,14 @@
 		<div class="container-fluid text-center">
 			
 			<div class="row">
-				<h1 style="margin: auto;padding-top: 20px;padding-left: 70px">
+				<h1 style="margin: auto;">
 				<center>Hey, <%= @user.first_name%>!</center></h1>
 			</div><br>
 
-			<%= render partial: 'dashboard',locals: {songs: @songs,movies: @movies,games: @games} %>
+			<%= render partial: 'dashboard',locals: { songs: @songs,movies: @movies,games: @games,
+													hasMoreMusic: @hasMoreMusic,
+													hasMoreMovies: @hasMoreMovies,
+													hasMoreGames: @hasMoreGames} %>
 		</div>
 	</div>
 </div>
@@ -51,13 +59,12 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 
-// Set selected menu option
-// var selector = '.sidebar-nav li';
-
-// $(selector).on('click', function(){
-//     $(selector).removeClass('active');
-//     $(this).addClass('active'); 
-// });
+// Close sidebar on home click
+$("#home").click(function(e) {
+	e.preventDefault();
+	$("#wrapper").toggleClass("toggled");
+	window.location.href="<%= j(root_url)%>"
+});
 
 // Set selected menu option from url
 var id = "<%= j @menuOption %>";

@@ -1,4 +1,4 @@
 $("#<%= @music.id%>").replaceWith("<%= j(render @music)%>");
 $("#myModal").modal("hide");
-$("#alert_wrapper").html("<div class='alert alert-success'><a class='close' data-dismiss='alert'>x</a><span><%= flash[:notice]%></span></div>");
+$("#alert_wrapper").html("<div class='alert alert-success'><a class='close' data-dismiss='alert'>x</a><span><%= flash[:msg]%></span></div>");
 $("#alert_wrapper").toggleClass("in out");

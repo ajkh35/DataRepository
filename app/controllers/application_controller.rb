@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def logged_in?
-		!get_current_user.nil? && (@current_user.id==session[:user_id])
+		!get_current_user.nil? && (get_current_user.id==session[:user_id])
 	end
 
 	def log_out
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
 	def authorize
 		unless logged_in?
-		  redirect_to sessions_new_path 
+		  redirect_to sessions_new_path
 		  flash[:alert] = "Log in to continue"
 		end
 	end

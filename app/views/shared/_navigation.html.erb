@@ -35,10 +35,10 @@
   <div class="collapse navbar-toggleable-md" id="navbarSupportedContent">
     <% if current_page?(welcome_Index_path) || current_page?(root_path) || 
       current_page?(musics_path) || current_page?(movies_path) || current_page?(games_path) || 
-      (!params[:token].nil? && params[:token]=='user') || current_page?('/sessions/new') %>
+      current_page?('/users/new') || current_page?('/sessions/new') %>
       <ul style="margin: 10px" class="nav navbar-nav text-md-center justify-content-md-between">
         <li style="margin-right: 30px" class="nav-item">
-          <%= link_to 'Home', welcome_Index_path, class: 'btn text-white'%></li>
+          <%= link_to 'Home', root_path, class: 'btn text-white'%></li>
         <li style="margin-right: 30px" class="nav-item">
           <%= link_to 'Music', musics_path, class: 'btn text-white'%></li>
         <li style="margin-right: 30px" class="nav-item">
@@ -50,21 +50,15 @@
             <%= link_to 'To Profile', {controller: 'users',action: 'show',id: get_current_user.id,
                 token: 'dashboard'}, class: 'btn text-white' %>  
           </li>
-        <% end %>    
+        <% end %>
       </ul>
     <% else %>
       <ul style="margin: 10px" class="nav navbar-nav navbar-right">
         <li class="nav-item">
-        <%= link_to 'Home', welcome_Index_path, class: 'btn text-white'%></li>
+          <%= link_to 'Home', welcome_Index_path, class: 'btn text-white'%>    
+        </li>
         <li class="nav-item">
-          <% if params[:token]=='music' %>
-            <%= link_to 'Go Back', musics_path, class: 'btn text-white' %>
-          <% elsif params[:token]=='movie' %>
-            <%= link_to 'Go Back', movies_path, class: 'btn text-white' %>
-          <% elsif params[:token]=='game' %>
-            <%= link_to 'Go Back', games_path, class: 'btn text-white' %>
-          <% else %>  
-          <% end %>    
+          <%= link_to 'Go Back', nav_link_for_intermediaries(params[:token]), class: 'btn text-white' %>   
         </li>
       </ul>
     <% end %>
@@ -73,14 +67,29 @@
   <div class="collapse navbar-toggleable-md" id="navbarLogin">
     <ul style="margin: 10px" class="nav navbar-nav text-md-center justify-content-md-between">
       <li class="nav-item">
-        <form class="text-white" action="<%= login_path%>" method="post">
-          <div class="form-group">
-          E-Mail: <input type="text" name="email" class="form-control"></div>
-          <div class="form-group">
-          Password: <input type="password" name="password" class="form-control"></div>
-          <input class="btn btn-primary" type="submit" value="To Account" style="margin-bottom: 5px">
-        </form>
-        <%= button_to 'Create Account', new_user_path, class: 'btn btn-success', method: :get %>
+        <%= form_for :session, url: {controller: 'sessions',action: 'create',method: :post} do |f| %>
+
+            <div class="field form-group text-white">
+              <%= f.label :email, "E-Mail:",class: 'control-label' %>
+              <div class="col-sm">
+                <%= f.text_field :email, class: 'form-control' %>
+              </div>
+            </div>
+
+            <div class="field form-group text-white">
+              <%= f.label :password, "Password:",class: 'control-label' %>
+              <div class="col-sm">
+                <%= f.password_field :password, class: 'form-control' %>
+              </div>
+            </div>
+
+            <div class="submit">
+              <%= f.submit 'Login', class: 'btn btn-primary', :name => 'submit' %>
+            </div>
+        <% end %>
+        <div style="margin-top: 5px;">
+          <%= button_to 'Create Account', new_user_path, class: 'btn btn-success', method: :get %>
+        </div>
       </li>
     </ul>
   </div>

@@ -1,10 +1,11 @@
 <%= form_for(user, html: {class: 'form-horizontal'},remote: true) do |f| %>
 	
 	<div class="modal-header">
-		<h2>Your details:</h2>
+		<h3>Your details:</h3>
+		<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
 	</div>
 
-	<div class="modal-body">	
+	<div class="modal-body" style="margin: 0 auto;text-indent: 8px">	
 		<% if user.errors.any? %>
 	      <div id="error_explanation">
 	        <h2><%= pluralize(user.errors.count, "error") %> prohibited this account creation:</h2>
@@ -18,41 +19,37 @@
 	    <% end %>
 
 	    <div class="field form-group">
-	    	<%= f.label :user_name, "User-Name:",class: 'col-sm-2 control-label' %>
+	    	<%= f.label :user_name, "User-Name:",class: 'control-label' %>
 	    	<div class="col-sm-5">
 	    		<%= f.text_field :user_name, class: 'form-control' %>
 	    	</div>
 	    </div>
 
 	    <div class="field form-group">
-	    	<%= f.label :first_name, "First Name:",class: 'col-sm-2 control-label' %>
+	    	<%= f.label :first_name, "First Name:",class: 'control-label' %>
 	    	<div class="col-sm-5">
 	    		<%= f.text_field :first_name, class: 'form-control' %>
 	    	</div>
 	    </div>
 
 	    <div class="field form-group">
-	    	<%= f.label :last_name, "Last Name:",class: 'col-sm-2 control-label' %>
+	    	<%= f.label :last_name, "Last Name:",class: 'control-label' %>
 	    	<div class="col-sm-5">
 	    		<%= f.text_field :last_name, class: 'form-control' %>
 	    	</div>
 	    </div>
 
 	    <div class="field form-group">
-	    	<%= f.label :avatar, "Change Picture:",class: 'col-sm-2 control-label' %>
+	    	<%= f.label :avatar, "Change Picture:",class: 'control-label' %>
 	    	<div class="col-sm-5">
 	    		<%= f.file_field :avatar %>
 	    	</div>
 	    </div>
 	</div>    
 
-    <div class="modal-footer">
+    <div class="modal-footer" style="border-top: none;">
 	    <div class="submit">
-	    	<div class="col-sm-1">
-    			<%= f.submit 'Update Account',class: 'btn btn-success', :name => 'submit' %>
-	    	</div>
+    		<%= f.submit 'Update Account',class: 'btn btn-success', :name => 'submit' %>
 	    </div>
-
-	    <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
     </div>
 <% end %>

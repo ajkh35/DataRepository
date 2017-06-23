@@ -1,48 +1,62 @@
-<div class="well well-md bg-white rounded" id="profile_well">
-				
-	<div class="col" style="margin: 15px">
+<div class="well well-md bg-white rounded" id="profile_well">	
+	<div class="col valign-wrapper">
 		<% if !songs.nil? %>
-		<div class="row" style="margin-bottom: 50px;">
-			<div class="col">
-				<h2 style="margin: auto;padding-bottom: 10px;">Your Songs</h2>
-				<% if songs.to_a.empty? %>
-					<h3 style="margin: auto;">There are no songs!</h3>
-				<% else %>
-					<div class="row">
-						<%= render partial: 'musics/music', collection: songs, cached: true %>
-					</div>	
-				<% end %>
-			</div>
+		<div class="jumbotron" style="background: rgb(200,200,255);">
+			<h2 class="display-3">Your Songs</h2>
+			<hr class="my-4">
+			<% if songs.to_a.empty? %>
+				<h3 class="lead">There are no songs!</h3>
+			<% else %>
+				<div id="user_music" class="row">
+					<%= render partial: 'song', collection: songs, cached: true %>
+				</div>
+			<% end %>
+
+			<% if hasMoreMusic %>
+				<a href="<%= get_more_path%>" class="btn btn-lg btn-success" 
+				data-params="category=music" data-remote="true" id="get_music"
+				style="margin-top: 20px;margin-bottom: -20px;">Load More Songs</a>
+			<% end %>
 		</div>
 		<% end %>
 
 		<% if !movies.nil? %>
-		<div class="row" style="margin-bottom: 50px">
-			<div class="col">
-				<h2 style="margin: auto;padding-bottom: 10px;">Your Movies</h2>
-				<% if movies.to_a.empty? %>
-					<h3 style="margin: auto;">There are no movies!</h3>
-				<% else %>	
-					<div class="row">
-						<%= render partial: 'movies/movie', collection: movies, cached: true %>
-					</div>	
-				<% end %>
-			</div>
+		<div class="jumbotron" style="background: rgb(255,200,200);">
+			<h2 class="display-3">Your Movies</h2>
+			<hr class="my-4">
+			<% if movies.to_a.empty? %>
+				<h3 class="lead">There are no movies!</h3>
+			<% else %>	
+				<div id="user_movies" class="row">
+					<%= render partial: 'movie', collection: movies, cached: true %>
+				</div>	
+			<% end %>
+
+			<% if hasMoreMovies %>
+			<a href="<%= get_more_path%>" class="btn btn-lg btn-success" 
+			data-params="category=movies" id="get_movies" data-remote="true" 
+			style="margin-top: 20px;margin-bottom: -20px;">Load More Movies</a>
+			<% end %>	
 		</div>
 		<% end %>
 
 		<% if !games.nil? %>
-		<div class="row">
-			<div class="col">
-				<h2 style="margin: auto;padding-bottom: 10px;">Your Games</h2>
-				<% if games.to_a.empty? %>
-					<h3 style="margin: auto;">There are no games!</h3>
-				<% else %>	
-					<div class="row">
-						<%= render partial: 'games/game', collection: games, cached: true %>
-					</div>	
-				<% end %>
-			</div>
+		<div class="jumbotron" style="background: rgb(200,255,200);">
+			<h2 class="display-3">Your Games</h2>
+			<hr class="my-4">
+			<% if games.to_a.empty? %>
+				<h3 class="lead">There are no games!</h3>
+			<% else %>	
+				<div id="user_games" class="row">
+					<%= render partial: 'game', collection: games, cached: true %>
+				</div>	
+			<% end %>
+
+			<% if hasMoreGames %>
+			<a href="<%= get_more_path%>" class="btn btn-lg btn-success"
+			data-params="category=games" id="get_games" data-remote="true" 
+			style="margin-top: 20px;margin-bottom: -20px;">Load More Games</a>
+			<% end %>	
 		</div>
 		<% end %>
 	</div>

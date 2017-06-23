@@ -10,6 +10,7 @@
 	<% elsif !game.nil? && movie.nil? && music.nil? %>
 		<%= link_to 'Delete',game,method: :delete, class: 'btn btn-danger', remote: true %>&nbsp;&nbsp;
 	<% else %>
+		<%= link_to 'Delete',user,method: :delete, class: 'btn btn-danger' %>&nbsp;&nbsp;
 	<% end %>
 	<%= link_to 'Close','#',data: {dismiss: "modal"},class: 'btn btn-primary' %>
 </div>

@@ -3,12 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #musicWell {
-	width: 80%;
+	width: 77%;
 	margin: auto;
+	background-image: url("meteora.jpg");
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 #songCard {
-	margin: 20px;
+	margin: 15px;
+	min-width: 200px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

@@ -15,7 +15,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.user_id = get_current_user.id
     if @game.save
-      flash[:notice] = "Added Game"
+      flash[:msg] = "Added Game"
     else
       render 'new'
     end  
@@ -28,7 +28,7 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     if @game.update(game_params)
-      flash[:notice] = "Updated game"
+      flash[:msg] = "Updated game"
     else
       render 'edit'
     end
@@ -41,7 +41,7 @@ class GamesController < ApplicationController
   def destroy
     @game = Game.find(params[:id])
     @game.destroy
-    flash[:notice] = "Deleted game"
+    flash[:msg] = "Deleted game"
   end
 
   def confirm_delete

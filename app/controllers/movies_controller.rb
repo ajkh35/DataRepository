@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     @movie.user_id = get_current_user.id
     if @movie.save
-      flash[:notice] = "Added movie"
+      flash[:msg] = "Added movie"
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
-      flash[:notice] = "Updated movie"
+      flash[:msg] = "Updated movie"
     else
       render 'edit'
     end
@@ -41,7 +41,7 @@ class MoviesController < ApplicationController
   def destroy
   	@movie = Movie.find(params[:id])
   	@movie.destroy
-    flash[:notice] = "Deleted movie"
+    flash[:msg] = "Deleted movie"
   end
 
   def confirm_delete

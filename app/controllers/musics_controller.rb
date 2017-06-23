@@ -15,7 +15,7 @@ class MusicsController < ApplicationController
 		@music = Music.new(music_params)
 		@music.user_id = get_current_user.id
 		if @music.save
-			flash[:notice] = "Added song"
+			flash[:msg] = "Added song"
 		else
 			render 'new'
 		end
@@ -28,7 +28,7 @@ class MusicsController < ApplicationController
 	def update
 		@music = Music.find(params[:id])
 		if @music.update(music_params)
-			flash[:notice] = "Updated song"
+			flash[:msg] = "Updated song"
 		else
 			render 'edit'
 		end		
@@ -41,7 +41,7 @@ class MusicsController < ApplicationController
 	def destroy
 		@music = Music.find(params[:id])
 		@music.destroy
-		flash[:notice] = "Deleted song"
+		flash[:msg] = "Deleted song"
 	end
 
 	def confirm_delete

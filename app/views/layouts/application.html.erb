@@ -21,9 +21,16 @@
       <div id="alert_wrapper" style="width: 500px;margin: auto"></div>
 
       <% if alert %>
-        <p class="alert alert-info" style="width: 500px;margin: auto">
+        <p class="alert alert-danger" style="width: 500px;margin: auto">
           <a href="#" class="close" data-dismiss="alert">&times;</a>
           <%= alert %>
+        </p>
+      <% end %>
+
+      <% if notice %>
+        <p class="alert alert-success" style="width: 500px;margin: auto">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          <%= notice %>
         </p>
       <% end %>
 

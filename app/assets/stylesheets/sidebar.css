@@ -69,6 +69,11 @@
     line-height: 40px;
 }
 
+.sidebar-nav li#delete_account {
+    display: block;
+    background: rgb(255,0,0);
+}
+
 .sidebar-nav li a {
     display: block;
     text-decoration: none;

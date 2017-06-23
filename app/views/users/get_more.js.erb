@@ -1,0 +1,27 @@
+<% if @category=='music' %>
+	<% @songs.each do |song| %>
+		$("#user_music").append("<%= j(render song)%>");
+	<% end %>
+
+	<% if !@hasMore %>
+		$("#get_music").remove();
+	<% end %>	
+<% elsif @category=='movies' %>
+	<% @movies.each do |movie| %>
+		$("#user_movies").append("<%= j(render movie)%>");
+	<% end %>
+
+	<% if !@hasMore %>
+		$("#get_movies").remove();
+	<% end %>
+<% elsif @category=='games' %>
+	<% @games.each do |game| %>
+		$("#user_games").append("<%= j(render game)%>");
+	<% end %>
+
+	<% if !@hasMore %>
+		$("#get_games").remove();
+	<% end %>
+<% else %>
+	// documents go here
+<% end %>

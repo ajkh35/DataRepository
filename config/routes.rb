@@ -3,15 +3,16 @@ Rails.application.routes.draw do
   # Session routes
   post 'sessions', :to => 'sessions#create'
   delete 'sessions/:id', :to => 'sessions#destroy', :as => 'logout'
-  post 'sessions/create_from_nav', :to => 'sessions#create_from_nav', :as => 'login'
   get 'sessions/new'
 
   # Delete confirm modal routes
   get 'musics/confirm_delete', :to => 'musics#confirm_delete', :as => 'delete_confirm_music'
   get 'movies/confirm_delete', :to => 'movies#confirm_delete', :as => 'delete_confirm_movie'
   get 'games/confirm_delete', :to => 'games#confirm_delete', :as => 'delete_confirm_game'
+  get 'users/confirm_delete', :to => 'users#confirm_delete', :as => 'delete_confirm_user'
 
-  
+  # AJAX route for loading more content 
+  get 'users/get_more', :to => 'users#get_more', :as => 'get_more'
 
   get 'welcome/Index'
 

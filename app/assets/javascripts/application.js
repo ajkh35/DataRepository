@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require cloudinary
 //= require jquery3
 //= require rails-ujs
 //= require turbolinks
@@ -20,8 +19,4 @@ $(document).ready(function() {
 	$('.has-popover').popover({
 		trigger: 'hover'
 	});
-});
-
-$(document).ready(function() {
-	$.cloudinary.responsive()
 });
