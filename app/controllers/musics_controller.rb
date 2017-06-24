@@ -1,6 +1,6 @@
 class MusicsController < ApplicationController
 
-	before_action :authorize, :except => :show
+	before_action :authorize, :except => [:show,:show_video]
 	respond_to :js, :html
 
 	def index
@@ -38,6 +38,10 @@ class MusicsController < ApplicationController
 		@music = Music.find(params[:id])
 	end
 
+	def show_video
+		@music = Music.find(params[:id])
+	end
+
 	def destroy
 		@music = Music.find(params[:id])
 		@music.destroy
@@ -46,6 +50,12 @@ class MusicsController < ApplicationController
 
 	def confirm_delete
 		@music = Music.find(params[:id])
+	end
+
+	def search
+		@search_for = params[:search_for]
+		# @token = params[:token]
+		# @songs = Music.where(@token: @search_for)
 	end
 
 	private

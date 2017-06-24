@@ -1,11 +1,11 @@
 <div id="<%= movie.id%>" class="col-xs">
 	<div id="movieCard" class="card text-center bg-faded">
 		<div class="card-block">
-			<h4 class="card-title has-popover" data-toggle="popover" title="<%= movie.title%>" >
+			<h4 class="card-title has-popover" data-toggle="popover" data-content="<%= movie.title%>" >
 			<%= truncate(movie.title.html_safe, length: 12)%></h4>
 			<h6 class="card-subtitle mb-2"><%= movie.genre%></h6>
 			<p class="card-text text-muted"><i>released in year <%= movie.year%></i></p>
-			<%= link_to "Play Trailer", movie_path(movie), class: 'btn btn-secondary',
+			<%= link_to "Play Trailer", show_movie_trailer_path(movie), class: 'btn btn-secondary',
 				method: :get, remote: true %>
 		</div>
 		<div class="card-footer">

@@ -1,5 +1,6 @@
 <div class="modal-header">
 	<h2><%= music.title%> video:</h2>
+	<a href="#" class="close" data-dismiss="modal">&times;</a>
 </div>
 
 <div class="modal-body">
@@ -13,8 +14,4 @@
 			<b>Could not find a video</b>
 		</div>
 	<% end %>		
-</div>
-
-<div class="modal-footer">
-	<%= link_to 'Close','#',data: {dismiss: "modal"}, class: 'btn btn-primary' %>
 </div>

@@ -1,0 +1,38 @@
+<div class="modal-header">
+	<h3>Search results:</h3>
+	<button class="close" data-dismiss="modal">&times;</button>
+</div>
+
+<div class="modal-body">
+	<div class="col valign-wrapper" style="margin: auto;">
+		<% if !songs.to_a.empty? %>
+		<div class="col">
+			<h2 style="margin: 10px;text-align: center;">Songs</h2>
+			<div class="row">
+				<%= render partial: 'song', collection: songs %>
+			</div>
+		</div>
+		<% end %>
+
+		<% if !movies.to_a.empty? %>
+		<div class="col">
+			<h2 style="margin: 10px;text-align: center;">Movies</h2><br>
+			<div class="row">
+				<%= render partial: 'movie', collection: movies %>
+			</div>
+		</div>
+		<% end %>
+
+		<% if !games.to_a.empty? %>
+		<div class="col">
+			<h2 style="margin: 10px;text-align: center;">Games</h2><br>
+			<div class="row">
+				<%= render partial: 'game', collection: games %>
+			</div>
+		</div>
+		<% end %>
+		<% if songs.to_a.empty? && movies.to_a.empty? && games.to_a.empty? %>
+			<h2 style="margin: 10px;text-align: center;">No Results Found.</h2>
+		<% end %>
+	</div>
+</div>

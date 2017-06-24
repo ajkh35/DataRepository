@@ -11,12 +11,20 @@
 // about supported directives.
 //
 //= require jquery3
+//= require popper
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
-$(document).ready(function() {
+
+var ready;
+ready = function(){
+
 	$('.has-popover').popover({
 		trigger: 'hover'
 	});
-});
+
+};
+
+$(document).ready(ready);
+$(document).on('turbolinks:load',ready);

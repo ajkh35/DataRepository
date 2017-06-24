@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   
-  before_action :authorize, :except => :show
+  before_action :authorize, :except => [:show,:show_trailer]
   respond_to :js, :html
 
   def index
@@ -35,6 +35,10 @@ class GamesController < ApplicationController
   end
 
   def show
+    @game = Game.find(params[:id])
+  end
+
+  def show_trailer
     @game = Game.find(params[:id])
   end
 

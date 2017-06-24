@@ -60,6 +60,10 @@ body.modal-open {
 	padding-right:inherit !important; 
 }
 
+.collapse:not(#navbarSearchForm):not(#navbarLogin) ul li:hover {
+	background: rgba(255,255,255,0.2);
+}
+
 // Main container
 #main-container {
 	min-height: 100vh;

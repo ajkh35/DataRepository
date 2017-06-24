@@ -67,8 +67,19 @@
 		});
 	<% end %>
 	</div><br><br>
+
+	<div id="welcomeWell" class="well well-lg rounded bg-white">
+		<div id="welcomeWrapper" class="col valign-wrapper">
+			<h2 style="margin: 15px;text-align: center;">Today's Feed</h3>
+			<div class="row">
+				<%= render partial: 'users/song', collection: @songs, cached: true %>
+				<%= render partial: 'users/movie', collection: @movies, cached: true %>
+				<%= render partial: 'users/game', collection: @games, cached: true %>
+			</div>
+		</div>
+	</div>
 		
-	<div id="jumbotronWell" class="well well-lg rounded bg-white">
+	<!-- <div id="jumbotronWell" class="well well-lg rounded bg-white">
 		<div id="jumbotronWrapper" class="col valign-wrapper text-white">
 			<div id="musicJumbotron" class="jumbotron bg-info">
 				<h1 class="display-3">Music</h1>
@@ -100,5 +111,5 @@
 				</p>
 			</div>
 		</div>
-	</div><br>
+	</div><br> -->
 </div>

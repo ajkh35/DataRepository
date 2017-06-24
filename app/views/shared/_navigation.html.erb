@@ -9,7 +9,7 @@
     <% else %>  
       <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-            aria-expanded="false" aria-label="Toggle navigation">
+            aria-expanded="false" aria-label="Toggle navigation" id="navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
     <% end %>
@@ -22,13 +22,13 @@
       <% if !current_page?('/sessions/new') %>
         <button class="navbar-toggler-right btn btn-primary" data-toggle="collapse"
             data-target="#navbarLogin" aria-controls="navbarLogin" aria-expanded="false" 
-            aria-label="Toggle navigation">
+            aria-label="Toggle navigation" id="navLogin">
           <span style="font-size: 1em"><b>Log In</b></span>
         </button>
       <% end %>  
     <% else %>
        <%= link_to 'Log Out', logout_path(get_current_user.id), 
-            class: 'navbar-toggler-right btn btn-primary',method: :delete %>
+          class: 'navbar-toggler-right btn btn-primary',method: :delete %>
     <% end %>
   </div>
   
@@ -46,10 +46,22 @@
         <li style="margin-right: 30px" class="nav-item">
           <%= link_to 'Games', games_path, class: 'btn text-white'%></li> 
         <% if logged_in? %>
-          <li class="nav-item">
+          <li style="margin-right: 30px" class="nav-item">
             <%= link_to 'To Profile', {controller: 'users',action: 'show',id: get_current_user.id,
                 token: 'dashboard'}, class: 'btn text-white' %>  
           </li>
+
+          <% if !current_page?(root_path) && !current_page?(welcome_Index_path) %>
+            <li class="nav-item">
+              <a class="btn text-white" href="#" data-toggle="collapse" data-target="#navbarSearch">
+              Search</a>
+            </li>
+          <% end %>
+        <% else %>  
+        <li class="nav-item">
+          <a class="btn text-white" href="#" data-toggle="collapse" data-target="#navbarSearchForm">
+            Search</a>
+        </li>
         <% end %>
       </ul>
     <% else %>
@@ -93,4 +105,132 @@
       </li>
     </ul>
   </div>
+
+  <div class="collapse navbar-toggleable-md" id="navbarSearch">
+    <ul style="margin: 10px" class="nav navbar-nav text-md-center justify-content-md-between">
+      <% if current_page?(musics_path) %>
+        <li style="margin-right: 30px" class="nav-item">
+        <%#= link_to 'by Title',"#",class: 'btn text-white',remote: true %>
+        <a href="#" class="btn text-white" data-target="#navbarSearchForm" data-toggle="collapse" 
+          id="music_title">by Title</a>
+        </li>
+        <li style="margin-right: 30px" class="nav-item">
+          <%= link_to 'by Year',"#",class: 'btn text-white', remote: true %>
+        </li>
+        <li style="margin-right: 30px" class="nav-item">
+          <%= link_to 'by Artist',"#", class: 'btn text-white',remote: true %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'by Album',"#",class: 'btn text-white', remote: true %>
+        </li>
+      <% elsif current_page?(movies_path) %>
+        <li style="margin-right: 30px" class="nav-item">
+        <%= link_to 'by Title',"#",class: 'btn text-white',remote: true %>
+        </li>
+        <li style="margin-right: 30px" class="nav-item">
+          <%= link_to 'by Year',"#",class: 'btn text-white', remote: true %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'by Genre',"#",class: 'btn text-white', remote: true %>
+        </li>
+      <% elsif current_page?(games_path) %>
+        <li style="margin-right: 30px" class="nav-item">
+        <%= link_to 'by Title',"#",class: 'btn text-white',remote: true %>
+        </li>
+        <li style="margin-right: 30px" class="nav-item">
+          <%= link_to 'by Year',"#",class: 'btn text-white', remote: true %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'by Creator',"#",class: 'btn text-white', remote: true %>
+        </li>
+      <% else %>
+        
+      <% end %>  
+    </ul>
+  </div>
+
+  <div class="collapse navbar-toggleable-md" id="navbarSearchForm">
+
+    <% if current_page?(musics_path) %>
+      <% path = search_music_path %>
+    <% elsif current_page?(movies_path) %>
+      <% path = search_movies_path %>
+    <% elsif current_page?(games_path) %>
+      <% path = search_games_path %>
+    <% else %>
+      <% path = home_search_path %>
+    <% end %>
+
+    <ul style="margin: 10px" class="nav navbar-nav text-md-center justify-content-md-between">
+      <li class="nav-item">
+        <% if path != home_search_path %>
+        <form action="<%= path%>" method="post" class="form-inline">
+          <div class="form-group" style="margin-right: 10px">
+            <label for="search" class="text-white" style="margin-right: 10px">Search titles:</label>
+            <input type="text" class="form-control" id="search">
+          </div>
+
+          <input type="submit" value="Search" class="btn text-white btn-primary">
+        </form>
+        <% else %>
+          <%= form_tag(path, method: 'post', remote: true ) do %>
+            <%= label_tag(:search, 'Search title:',class: 'text-white') %>&nbsp;
+            <%= text_field_tag(:search) %>
+            <%= submit_tag("Search",class: 'btn text-white btn-primary') %>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <script>
+    $("#navMenu").click(function(e) {
+
+      e.preventDefault();
+      var isSupportedContentVisible = $("#navbarSupportedContent").is(":visible");
+      var isLoginVisible = $("#navbarLogin").is(":visible");
+      var isSearchVisible = $("#navbarSearch").is(":visible");
+      var isSearchFormVisible = $("#navbarSearchForm").is(":visible");
+
+      if(isSupportedContentVisible) {
+        $("#navbarSupportedContent").collapse("hide");
+      }
+
+      if(isLoginVisible){
+        $("#navbarLogin").collapse("hide");
+      }
+
+      if(isSearchVisible){
+        $("#navbarSearch").collapse("hide");
+      }
+
+      if(isSearchFormVisible){
+        $("#navbarSearchForm").collapse("hide");
+      }
+    });
+
+    $("#navLogin").click(function(e) {
+      
+      e.preventDefault();
+      var isSupportedContentVisible = $("#navbarSupportedContent").is(":visible");
+      var isLoginVisible = $("#navbarLogin").is(":visible");
+      var isSearchVisible = $("#navbarSearch").is(":visible");
+      var isSearchFormVisible = $("#navbarSearchForm").is(":visible");
+
+      if(isSupportedContentVisible) {
+        $("#navbarSupportedContent").collapse("hide");
+      }
+
+      if(isLoginVisible){
+        $("#navbarLogin").collapse("hide");
+      }
+
+      if(isSearchVisible){
+        $("#navbarSearch").collapse("hide");
+      }
+
+      if(isSearchFormVisible){
+        $("#navbarSearchForm").collapse("hide");
+      }
+    });
+  </script>
 </nav>

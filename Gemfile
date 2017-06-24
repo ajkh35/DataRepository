@@ -58,6 +58,8 @@ group :development do
   gem 'yt', '~> 0.28.0'
   # Gem to respond to various data formats like js, html or json
   gem 'responders'
+  # Using jquery-turbolinks for popover issue
+  # gem 'jquery-turbolinks'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

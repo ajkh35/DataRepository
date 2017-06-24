@@ -1,5 +1,6 @@
 <div class="modal-header">
 	<h2><%= game.title%> trailer:</h2>
+	<button class="close" data-dismiss="modal">&times;</button>
 </div>
 
 <div class="modal-body">
@@ -11,8 +12,4 @@
 	<% else %>
 		<b>Could not find a trailer</b>
 	<% end %>
-</div>
-
-<div class="modal-footer">
-	<%= link_to 'Close','#',data: {dismiss: "modal"}, class: 'btn btn-primary' %>
 </div>

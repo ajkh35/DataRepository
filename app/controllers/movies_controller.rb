@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   
-  before_action :authorize, :except => :show
+  before_action :authorize, :except => [:show,:show_trailer]
   respond_to :js, :html
 
   def index
@@ -36,6 +36,10 @@ class MoviesController < ApplicationController
 
   def show
   	@movie = Movie.find(params[:id])
+  end
+
+  def show_trailer
+    @movie = Movie.find(params[:id])
   end
 
   def destroy
