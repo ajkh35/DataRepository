@@ -1,8 +1,8 @@
 <div id="<%= song.id%>" class="col-xs">
-	<div id="songCard" class="card text-center bg-faded">
+	<div id="songCard" class="card text-center bg-faded hover-shadow">
 		<div class="card-block">
 			<h4 class="card-title has-popover" data-toggle="popover" data-content="<%= song.title%>">
-				<%= truncate(song.title.html_safe, length: 12)%></h4></a>
+				<%= truncate(song.title.html_safe, length: 12)%></h4>
 			<h6 class="card-subtitle mb-2"><%= song.album%></h6>
 			<p class="card-text text-muted"><i>by <%= song.artist%> in <%= song.year%></i></p>
 			<!-- <a href="<%= music_path(song)%>" data-params="id=<%= song.id%>" data-toggle="modal"			data-remote="true">Show Details</a> -->

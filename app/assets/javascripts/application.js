@@ -24,6 +24,56 @@ ready = function(){
 		trigger: 'hover'
 	});
 
+	$("#navMenu").click(function(e) {
+
+	  e.preventDefault();
+	  var isSupportedContentVisible = $("#navbarSupportedContent").is(":visible");
+	  var isLoginVisible = $("#navbarLogin").is(":visible");
+	  var isSearchVisible = $("#navbarSearch").is(":visible");
+	  var isSearchFormVisible = $("#navbarSearchForm").is(":visible");
+
+	  if(isSupportedContentVisible) {
+	    $("#navbarSupportedContent").collapse("hide");
+	  }
+
+	  if(isLoginVisible){
+	    $("#navbarLogin").collapse("hide");
+	  }
+
+	  if(isSearchVisible){
+	    $("#navbarSearch").collapse("hide");
+	  }
+
+	  if(isSearchFormVisible){
+	    $("#navbarSearchForm").collapse("hide");
+	  }
+	});
+
+	$("#navLogin").click(function(e) {
+	  
+	  e.preventDefault();
+	  var isSupportedContentVisible = $("#navbarSupportedContent").is(":visible");
+	  var isLoginVisible = $("#navbarLogin").is(":visible");
+	  var isSearchVisible = $("#navbarSearch").is(":visible");
+	  var isSearchFormVisible = $("#navbarSearchForm").is(":visible");
+
+	  if(isSupportedContentVisible) {
+	    $("#navbarSupportedContent").collapse("hide");
+	  }
+
+	  if(isLoginVisible){
+	    $("#navbarLogin").collapse("hide");
+	  }
+
+	  if(isSearchVisible){
+	    $("#navbarSearch").collapse("hide");
+	  }
+
+	  if(isSearchFormVisible){
+	    $("#navbarSearchForm").collapse("hide");
+	  }
+	});
+
 };
 
 $(document).ready(ready);

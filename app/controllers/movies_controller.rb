@@ -42,6 +42,10 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
   end
 
+  def search
+    @movies = Movie.search_user(get_current_user.id,params[:search])
+  end
+
   def destroy
   	@movie = Movie.find(params[:id])
   	@movie.destroy

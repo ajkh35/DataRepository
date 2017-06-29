@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @menuOption = params[:token]
     @songs, @movies, @games, @documents = nil, nil, nil, nil
-    $loaded = 0
+    $loaded = {music: 0,movies: 0,games: 0}
     if verify_user(@user)
       if @menuOption=='dashboard'
         dashboard(@user)
@@ -100,43 +100,50 @@ class UsersController < ApplicationController
 
 # Get more items on button click
   def get_more
-
-    # Get load offset
-    if $loaded>0
-      loaded = $loaded
-    else
-      loaded = 4
-    end
-
     @category = params[:category]
 
     # Query new objects
     if params[:category] == 'music'
+      if $loaded[:music]>0
+        loaded = $loaded[:music]
+      else
+        loaded = 4
+      end
       @songs = Music.where(user_id: get_current_user.id).offset(loaded).limit(4)
       if((Music.where(user_id: get_current_user.id).offset(loaded).count - @songs.count) > 0)
         @hasMore = true
-        $loaded = loaded + @songs.count
+        $loaded[:music] = loaded + @songs.count
       else
         @hasMore = false
-        $loaded = 0
+        $loaded[:music] = 0
       end
     elsif params[:category]=='movies'
+      if $loaded[:movies]>0
+        loaded = $loaded[:movies]
+      else
+        loaded = 4
+      end
       @movies = Movie.where(user_id: get_current_user.id).offset(loaded).limit(4)
       if((Movie.where(user_id: get_current_user.id).offset(loaded).count - @movies.count) > 0)
         @hasMore = true
-        $loaded = loaded + @movies.count
+        $loaded[:movies] = loaded + @movies.count
       else
         @hasMore = false
-        $loaded = 0
+        $loaded[:movies] = 0
       end
     elsif params[:category]=='games'
+      if $loaded[:games]>0
+        loaded = $loaded[:games]
+      else
+        loaded = 4
+      end
       @games = Game.where(user_id: get_current_user.id).offset(loaded).limit(4)
       if((Game.where(user_id: get_current_user.id).offset(loaded).count - @games.count) > 0)
         @hasMore = true
-        $loaded = loaded + @games.count
+        $loaded[:games] = loaded + @games.count
       else
         @hasMore = false
-        $loaded = 0
+        $loaded[:games] = 0
       end
     else
       # documents go here 

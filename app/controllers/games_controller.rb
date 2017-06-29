@@ -42,6 +42,10 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def search
+    @games = Game.search_user(get_current_user.id,params[:search])
+  end
+
   def destroy
     @game = Game.find(params[:id])
     @game.destroy

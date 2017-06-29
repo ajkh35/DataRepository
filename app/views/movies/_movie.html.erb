@@ -1,5 +1,5 @@
 <div id="<%= movie.id%>" class="col-xs">
-	<div id="movieCard" class="card text-center bg-faded">
+	<div id="movieCard" class="card text-center bg-faded hover-shadow">
 		<div class="card-block">
 			<h4 class="card-title has-popover" data-toggle="popover" data-content="<%= movie.title%>" >
 			<%= truncate(movie.title.html_safe, length: 12)%></h4>

@@ -1,6 +1,6 @@
 <% if @category=='music' %>
 	<% @songs.each do |song| %>
-		$("#user_music").append("<%= j(render song)%>");
+		$("#user_music").append("<%= j(render partial: 'song',locals: {song: song})%>");
 	<% end %>
 
 	<% if !@hasMore %>
@@ -8,7 +8,7 @@
 	<% end %>	
 <% elsif @category=='movies' %>
 	<% @movies.each do |movie| %>
-		$("#user_movies").append("<%= j(render movie)%>");
+		$("#user_movies").append("<%= j(render partial: 'movie',locals: {movie: movie})%>");
 	<% end %>
 
 	<% if !@hasMore %>
@@ -16,7 +16,7 @@
 	<% end %>
 <% elsif @category=='games' %>
 	<% @games.each do |game| %>
-		$("#user_games").append("<%= j(render game)%>");
+		$("#user_games").append("<%= j(render partial: 'game',locals: {game: game})%>");
 	<% end %>
 
 	<% if !@hasMore %>
@@ -25,3 +25,4 @@
 <% else %>
 	// documents go here
 <% end %>
+$("[data-toggle='popover']").popover({trigger: "hover"});

@@ -6,9 +6,8 @@
 <div class="modal-body">
 	<% id = find_video(music)%>
 	<% if !id.nil? %>
-		<iframe src="https://www.youtube.com/embed/<%= id%>"
-			width="470" height="360" allowFullScreen="allowFullScreen"
-			frameBorder="0"></iframe>
+		<iframe src="https://www.youtube.com/embed/<%= id%>"width="470" height="360" 
+			allowFullScreen="allowFullScreen" frameBorder="0"></iframe>
 	<% else %>
 		<div class="pClass">
 			<b>Could not find a video</b>

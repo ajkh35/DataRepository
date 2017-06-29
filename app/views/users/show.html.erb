@@ -4,7 +4,8 @@
 	<div id="sidebar-wrapper" class="bg-primary">
 		<span>
 			<a href="<%= edit_user_path(@user)%>" data-remote="true">
-	        <%= image_tag @user.avatar.url(:medium), :class => 'img-circular' %></a>
+	        	<%= image_tag @user.avatar.url,:class => 'img-circular' %>
+	        </a>
 	    </span>
 
 	    <ul class="sidebar-nav">

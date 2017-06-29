@@ -12,8 +12,8 @@ class WelcomeController < ApplicationController
   end
 
   def search
-  	@songs = Music.where(title: params[:search])
-  	@movies = Movie.where(title: params[:search])
-  	@games = Game.where(title: params[:search])
+  	@songs = Music.search(params[:search])
+  	@movies = Movie.search(params[:search])
+  	@games = Game.search(params[:search])
   end
 end

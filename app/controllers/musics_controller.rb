@@ -53,13 +53,19 @@ class MusicsController < ApplicationController
 	end
 
 	def search
-		@search_for = params[:search_for]
-		# @token = params[:token]
-		# @songs = Music.where(@token: @search_for)
+		@songs = Music.search_user(get_current_user.id,params[:search])
 	end
 
 	private
 	def music_params
 		params.require(:music).permit(:title, :artist, :album, :year, :youtube_url)
+	end
+
+	def get_token(token)
+		if token == 'music_title'
+			return 'title'
+		else
+			return 'year'
+		end
 	end
 end
