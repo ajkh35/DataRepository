@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   </head>
 
   <body style="padding-top: 60px">
@@ -18,7 +19,7 @@
 
     <main id="main-container" role="main" class="container-fluid bg-faded">
 
-      <div id="alert_wrapper" style="width: 500px;margin: auto"></div>
+      <div id="alert_wrapper" style="width: 600px;margin: auto"></div>
 
       <% if alert %>
         <p class="alert alert-danger" style="width: 500px;margin: auto">
@@ -38,9 +39,19 @@
         <%= yield %>
       </div>
 
-      <div id="myModal" class="modal hide fade" tabindex="-1">
+      <div id="myModal" class="modal hide fade" tabindex="-1" ole="dialog" 
+          aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div id="myModalContent" class="modal-content">
+            
+          </div>
+        </div>
+      </div>
+
+      <div id="myDocument" class="modal hide fade" tabindex="-1" role="dialog" 
+          aria-labelledby="myDocumentLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div id="myDocumentContent" class="modal-content">
             
           </div>
         </div>

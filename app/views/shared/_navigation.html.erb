@@ -33,7 +33,7 @@
   </div>
   
   <div class="collapse navbar-toggleable-md" id="navbarSupportedContent">
-    <% if current_page?(welcome_Index_path) || current_page?(root_path) || 
+    <% if current_page?(welcome_Index_path) || current_page?(root_path) || current_page?(documents_path) ||
       current_page?(musics_path) || current_page?(movies_path) || current_page?(games_path) || 
       current_page?('/users/new') || current_page?('/sessions/new') %>
       <ul style="margin: 10px" class="nav navbar-nav text-md-center justify-content-md-between">
@@ -44,7 +44,9 @@
         <li style="margin-right: 30px" class="nav-item">
           <%= link_to 'Movies', movies_path, class: 'btn text-white'%></li>
         <li style="margin-right: 30px" class="nav-item">
-          <%= link_to 'Games', games_path, class: 'btn text-white'%></li> 
+          <%= link_to 'Games', games_path, class: 'btn text-white'%></li>
+        <li style="margin-right: 30px" class="nav-item">
+          <%= link_to 'Documents', documents_path, class: 'btn text-white'%></li>
         <% if logged_in? %>
           <li style="margin-right: 30px" class="nav-item">
             <%= link_to 'To Profile', {controller: 'users',action: 'show',id: get_current_user.id,
@@ -177,6 +179,8 @@
       <% path = search_movies_path %>
     <% elsif current_page?(games_path) %>
       <% path = search_games_path %>
+    <% elsif current_page?(documents_path) %>
+      <% path = search_documents_path %>
     <% else %>
       <% path = home_search_path %>
     <% end %>

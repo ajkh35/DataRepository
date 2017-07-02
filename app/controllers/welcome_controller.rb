@@ -15,5 +15,6 @@ class WelcomeController < ApplicationController
   	@songs = Music.search(params[:search])
   	@movies = Movie.search(params[:search])
   	@games = Game.search(params[:search])
+    @documents = Document.search(params[:search])
   end
 end

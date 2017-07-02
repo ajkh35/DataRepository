@@ -3,6 +3,7 @@
 @import 'music';
 @import 'movies';
 @import 'games';
+@import 'documents';
 @import 'users';
 @import 'footer';
 
@@ -55,9 +56,18 @@
 	max-width: 200px;
 }
 
+.modal{
+	overflow-y: auto;
+}
+
 body.modal-open { 
 	overflow:inherit; 
 	padding-right:inherit !important; 
+}
+
+@media screen and (min-width:768px) {
+	#myDocument{right:10%;left:-20%;position:absolute;}
+	#myDocument .modal-content {width:900px;height:75%}
 }
 
 .collapse:not(#navbarSearchForm):not(#navbarLogin) ul li:hover {

@@ -3,12 +3,14 @@
 </div>
 
 <div class="modal-footer">
-	<% if !music.nil? && game.nil? && movie.nil? %>
+	<% if !music.nil? && game.nil? && movie.nil? && document.nil? %>
 		<%= link_to 'Delete',music,method: :delete, class: 'btn btn-danger', remote: true %>&nbsp;&nbsp;
-	<% elsif !movie.nil? && music.nil? && game.nil? %>
+	<% elsif !movie.nil? && music.nil? && game.nil? && document.nil? %>
 		<%= link_to 'Delete',movie,method: :delete, class: 'btn btn-danger', remote: true %>&nbsp;&nbsp;
-	<% elsif !game.nil? && movie.nil? && music.nil? %>
+	<% elsif !game.nil? && movie.nil? && music.nil? && document.nil? %>
 		<%= link_to 'Delete',game,method: :delete, class: 'btn btn-danger', remote: true %>&nbsp;&nbsp;
+	<% elsif !document.nil? && music.nil? && movie.nil? && game.nil? %>
+		<%= link_to 'Delete',document,method: :delete,class: 'btn btn-danger',remote: true %>&nbsp;&nbsp;	
 	<% else %>
 		<%= link_to 'Delete',user,method: :delete, class: 'btn btn-danger' %>&nbsp;&nbsp;
 	<% end %>

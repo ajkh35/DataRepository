@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @menuOption = params[:token]
     @songs, @movies, @games, @documents = nil, nil, nil, nil
-    $loaded = {music: 0,movies: 0,games: 0}
+    $loaded = {music: 0,movies: 0,games: 0,documents: 0}
     if verify_user(@user)
       if @menuOption=='dashboard'
         dashboard(@user)
@@ -53,8 +53,10 @@ class UsersController < ApplicationController
       elsif @menuOption=='games'
         @games = Game.where(user_id: @user.id).limit(4)
         @hasMoreGames = has_more(@games,'games')
+      elsif @menuOption=='documents'
+        @documents = Document.where(user_id: @user.id).limit(4)
+        @hasMoreDocuments = has_more(@documents,'documents')
       else
-        # Get documents here
       end
     else
       redirect_to user_path(get_current_user)
@@ -81,6 +83,8 @@ class UsersController < ApplicationController
     @hasMoreMovies = has_more(@movies,'movies')
     @games = Game.where(user_id: user.id).limit(4)
     @hasMoreGames = has_more(@games,'games')
+    @documents = Document.where(user_id: user.id).limit(4)
+    @hasMoreDocuments = has_more(@documents,'documents')
   end
 
 # Know if there are more objects on page load
@@ -94,6 +98,9 @@ class UsersController < ApplicationController
     elsif category=='games'
       games = Game.where(user_id: get_current_user.id).limit(5)
       return (games.count-object.count) > 0 
+    elsif category=='documents'
+      documents = Document.where(user_id: get_current_user.id).limit(5)
+      return (documents.count-object.count) > 0
     else
     end
   end
@@ -145,8 +152,21 @@ class UsersController < ApplicationController
         @hasMore = false
         $loaded[:games] = 0
       end
-    else
-      # documents go here 
+    elsif params[:category]=='documents'
+      if $loaded[:documents]>0
+        loaded = $loaded[:documents]
+      else
+        loaded = 4
+      end
+      @documents = Document.where(user_id: get_current_user.id).offset(loaded).limit(4)
+      if((Document.where(user_id: get_current_user.id).offset(loaded).count - @documents.count) > 0)
+        @hasMore = true
+        $loaded[:documents] = loaded + @documents.count
+      else
+        @hasMore = false
+        $loaded[:documents] = 0
+      end
+    else 
     end
   end
 

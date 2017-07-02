@@ -25,7 +25,7 @@
 	            <a id="games" href="/users/<%= @user.id%>?token=games">Games</a>
 	        </li>
 	        <li>
-	            <a id="documents" href="#">Documents</a>
+	            <a id="documents" href="/users/<%= @user.id%>?token=documents">Documents</a>
 	        </li>
 	        <li id="delete_account">
 	        	<span>
@@ -46,9 +46,11 @@
 			</div><br>
 
 			<%= render partial: 'dashboard',locals: { songs: @songs,movies: @movies,games: @games,
+													documents: @documents,
 													hasMoreMusic: @hasMoreMusic,
 													hasMoreMovies: @hasMoreMovies,
-													hasMoreGames: @hasMoreGames} %>
+													hasMoreGames: @hasMoreGames,
+													hasMoreDocuments: @hasMoreDocuments} %>
 		</div>
 	</div>
 </div>

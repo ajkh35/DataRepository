@@ -1,0 +1,22 @@
+// Place all the styles related to the documents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#documentWell {
+	width: 77%;
+	margin: auto;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#documentCard {
+	margin: 15px;
+	min-width: 200px;
+}
+
+#documentCard.hover-shadow{
+	transition: 0.3s;
+}
+
+.hover-shadow:hover{
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}

@@ -9,11 +9,13 @@ Rails.application.routes.draw do
   get 'show_video/:id', :to => 'musics#show_video', :as => 'show_video'
   get 'movies/show_trailer/:id', :to => 'movies#show_trailer', :as => 'show_movie_trailer'
   get 'games/show_trailer/:id', :to => 'games#show_trailer', :as => 'show_game_trailer'
+  get 'show_doc_modal/:id', :to => 'documents#show_doc_modal', :as => 'show_doc_modal'
 
   # Delete confirm modal routes
   get 'musics/confirm_delete', :to => 'musics#confirm_delete', :as => 'delete_confirm_music'
   get 'movies/confirm_delete', :to => 'movies#confirm_delete', :as => 'delete_confirm_movie'
   get 'games/confirm_delete', :to => 'games#confirm_delete', :as => 'delete_confirm_game'
+  get 'docuents/confirm_delete', :to => 'documents#confirm_delete', :as => 'delete_confirm_document'
   get 'users/confirm_delete', :to => 'users#confirm_delete', :as => 'delete_confirm_user'
 
   # AJAX route for loading more content 
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
   post 'musics/search', :to => 'musics#search', :as => 'search_music'
   post 'movies/search', :to => 'movies#search', :as => 'search_movies'
   post 'games/search', :to => 'games#search', :as => 'search_games'
+  post 'documents/search', :to => 'documents#search', :as => 'search_documents'
   post 'welcome/search', :to => 'welcome#search', :as => 'home_search'
 
   get 'welcome/Index'
@@ -30,6 +33,7 @@ Rails.application.routes.draw do
   resources :musics
   resources :movies
   resources :games
+  resources :documents
   resources :users
 
   root 'welcome#Index'

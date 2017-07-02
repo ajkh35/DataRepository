@@ -1,0 +1,9 @@
+<div id="<%= document.id%>" class="col-xs">
+	<div id="documentCard" class="card text-center hover-shadow">
+		<div class="card-block">
+			<h4 class="card-title has-popover" data-toggle="popover" data-content="<%= document.title%>">
+				<%= truncate(document.title.html_safe, length: 12)%></h4>
+			<%= link_to 'View Doc', show_doc_modal_path(document),class: 'btn btn-secondary',remote: true %>
+		</div>
+	</div>
+</div>

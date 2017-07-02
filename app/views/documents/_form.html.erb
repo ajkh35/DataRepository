@@ -1,0 +1,47 @@
+<%= form_for(document, html: {class: 'form-horizontal'}, remote: true) do |f| %>
+
+    <div class="modal-header">
+      <h2>Document Details:</h2>
+      <button class="btn btn-danger btn-sm" data-dismiss="modal">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <% if document.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+          <ul>
+            <% document.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field form-group">
+      	<%= f.label :title, "Title:",class: 'col-sm-2 control-label' %>
+      	<div class="col-sm-5">
+      	 <%= f.text_field :title, class: 'form-control' %>
+      	</div>
+      </div>
+
+    	<div class="field form-group">
+       <%= f.label :doc, "File:", class: 'col-sm-2 control-label' %>
+       <div class="col-sm-5">
+         <%= f.file_field :doc %>
+       </div> 
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <div class="submit">
+        <div class="col-sm-1">
+          <% if document.id %>
+            <%= f.submit 'Update Song', :class => 'btn btn-success', :name => 'submit' %> 
+          <% else %>
+            <%= f.submit 'Add Song', :class => 'btn btn-success', :name => 'submit' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+<% end %>

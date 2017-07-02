@@ -1,3 +1,3 @@
-$("#myModalContent").html("<%= j(render partial: 'shared/search_result', locals: {songs: @songs,movies: @movies,games: @games})%>");
+$("#myModalContent").html("<%= j(render partial: 'shared/search_result', locals: {songs: @songs,movies: @movies,games: @games,documents: @documents})%>");
 $("#myModal").modal("show");
 $("[data-toggle='popover']").popover({trigger: "hover"});

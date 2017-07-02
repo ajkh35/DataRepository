@@ -73,7 +73,6 @@ ready = function(){
 	    $("#navbarSearchForm").collapse("hide");
 	  }
 	});
-
 };
 
 $(document).ready(ready);

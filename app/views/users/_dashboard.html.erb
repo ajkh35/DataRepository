@@ -53,10 +53,30 @@
 			<% end %>
 
 			<% if hasMoreGames %>
-			<a href="<%= get_more_path%>" class="btn btn-lg btn-success"
-			data-params="category=games" id="get_games" data-remote="true" 
-			style="margin-top: 20px;margin-bottom: -20px;">Load More Games</a>
+				<a href="<%= get_more_path%>" class="btn btn-lg btn-success"
+					data-params="category=games" id="get_games" data-remote="true" 
+					style="margin-top: 20px;margin-bottom: -20px;">Load More Games</a>
 			<% end %>	
+		</div>
+		<% end %>
+
+		<% if !documents.nil? %>
+		<div class="jumbotron" style="background: rgb(200,200,200);">
+			<h2 class="display-3">Your Documents</h2>
+			<hr class="my-4">
+			<% if documents.to_a.empty? %>
+				<h3 class="lead">There are no documents!</h3>
+			<% else %>
+				<div id="user_documents" class="row">
+					<%= render partial: 'document', collection: documents, cached: true %>
+				</div>
+			<% end %>
+
+			<% if hasMoreDocuments %>
+				<a href="<%= get_more_path%>" class="btn btn-lg btn-success"
+					data-params="category=documents" id="get_documents" data-remote="true" 
+					style="margin-top: 20px;margin-bottom: -20px;">Load More Documents</a>
+			<% end %>
 		</div>
 		<% end %>
 	</div>

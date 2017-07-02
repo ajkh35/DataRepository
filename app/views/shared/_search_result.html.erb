@@ -31,7 +31,15 @@
 			</div>
 		</div>
 		<% end %>
-		<% if songs.to_a.empty? && movies.to_a.empty? && games.to_a.empty? %>
+
+		<% if !documents.to_a.empty? %>
+			<h2 style="margin: 10px;text-align: center;"></h2>Documents<br>
+			<div class="row">
+				<%= render partial: 'welcome/document', collection: documents %>
+			</div>
+		<% end %>
+
+		<% if songs.to_a.empty? && movies.to_a.empty? && games.to_a.empty? && documents.to_a.empty? %>
 			<h2 style="margin: 10px;text-align: center;">No Results Found.</h2>
 		<% end %>
 	</div>

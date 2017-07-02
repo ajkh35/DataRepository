@@ -22,7 +22,14 @@
 	<% if !@hasMore %>
 		$("#get_games").remove();
 	<% end %>
+<% elsif @category=='documents' %>
+	<% @documents.each do |document| %>
+		$("#user_documents").append("<%= j(render partial: 'document',locals: {document: document})%>");
+	<% end %>
+
+	<% if !@hasMore %>
+		$("#get_documents").remove();
+	<% end %>
 <% else %>
-	// documents go here
 <% end %>
 $("[data-toggle='popover']").popover({trigger: "hover"});

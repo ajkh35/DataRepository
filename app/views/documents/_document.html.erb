@@ -1,0 +1,19 @@
+<div id="<%= document.id%>" class="col-xs">
+	<div id="documentCard" class="card text-center bg-faded hover-shadow">
+		<div class="card-block">
+			<h4 class="card-title has-popover" data-toggle="popover" data-content="<%= document.title%>" >
+			<%= truncate(document.title.html_safe, length: 12)%></h4>
+			<%= link_to 'View Doc', show_doc_modal_path(document), class: 'btn btn-secondary',
+				method: :get, remote: true %>
+		</div>
+
+		<div class="card-footer">
+			<div id="edit_document" style="margin: auto;text-align: center">
+				<%= link_to 'Edit',{controller: 'documents',action: 'edit',id: document.id,
+					token: 'document'},method: :get,class: 'btn btn-info btn-sm',remote: true %>&nbsp;&nbsp;
+				<a href="<%= delete_confirm_document_path%>" data-remote="true" 
+					class="btn btn-sm btn-danger" data-params="id=<%= document.id%>">Delete</a>
+			</div>
+		</div>
+	</div>
+</div>
