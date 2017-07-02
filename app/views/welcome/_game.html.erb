@@ -1,12 +1,14 @@
 <div id="<%= game.id%>" class="col-xs">
-	<div id="gameCard" class="card text-center bg-faded hover-shadow">
+	<% img_url = get_youtube_thumbnail(game.trailer_url) %>
+	<div id="gameCard" class="card text-center text-white hover-shadow"
+		style="background-image: url(<%= img_url%>);">
 		<div class="card-block">
-			<h4 class="card-title has-popover" data-toggle="popover" title="<%= game.title%>" >
+			<h4 class="card-title has-popover" data-toggle="popover" data-content="<%= game.title%>" >
 			<%= truncate(game.title.html_safe, length: 12)%></h4>
 			<h6 class="card-subtitle mb-2"><%= game.creator%></h6>
-			<p class="card-text text-muted"><i>released in <%= game.year%></i></p>
-			<a href="https://www.youtube.com/watch?v=<%= game.trailer_url%>" target="_blank">
-				Go to YouTube</a>
+			<p class="card-text"><i>released in <%= game.year%></i></p>
+			<a href="https://www.youtube.com/watch?v=<%= game.trailer_url%>" class="btn btn-secondary"
+			target="_blank">Go to YouTube</a>
 		</div>
 	</div>
 </div>

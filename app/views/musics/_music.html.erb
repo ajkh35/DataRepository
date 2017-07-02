@@ -1,10 +1,12 @@
 <div id="<%= music.id%>" class="col-xs">
-	<div id="songCard" class="card text-center bg-faded hover-shadow">
+	<% img_url = get_youtube_thumbnail(music.youtube_url) %>
+	<div id="songCard" class="card text-center text-white hover-shadow"
+		style="background-image: url(<%= img_url%>)">
 		<div class="card-block">
 			<h4 class="card-title has-popover" data-toggle="popover" data-content="<%= music.title%>">
 				<%= truncate(music.title.html_safe, length: 12)%></h4></a>
 			<h6 class="card-subtitle mb-2"><%= music.album%></h6>
-			<p class="card-text text-muted"><i>by <%= music.artist%> in <%= music.year%></i></p>
+			<p class="card-text"><i>by <%= music.artist%> in <%= music.year%></i></p>
 			<%= link_to "Play on YouTube", show_video_path(music), class: 'btn btn-secondary',
 				method: :get, remote: true %>
 		</div>

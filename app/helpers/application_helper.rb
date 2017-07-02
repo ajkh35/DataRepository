@@ -16,4 +16,14 @@ module ApplicationHelper
 		path = url.split('/search')[0]
 		return path.to_s
 	end
+
+	def get_youtube_thumbnail(id)
+		if id.nil?
+			url = asset_path('music_placeholder.png')
+			return url
+		else
+			url = "https://img.youtube.com/vi/"+id+"/mqdefault.jpg"
+			return url
+		end
+	end
 end
